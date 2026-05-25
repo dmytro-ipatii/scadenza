@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>Scadenza — App icon · A · Envelope with wax seal</title>
+  <defs>
+    <radialGradient id="parchment" cx="30%" cy="25%" r="80%">
+      <stop offset="0" stop-color="#FAF0DC"></stop>
+      <stop offset="0.6" stop-color="#F4E5D2"></stop>
+      <stop offset="1" stop-color="#E5D2B5"></stop>
+    </radialGradient>
+    <radialGradient id="seal" cx="50%" cy="46%" r="55%">
+      <stop offset="0" stop-color="#C9622A"></stop>
+      <stop offset="0.7" stop-color="#B0521C"></stop>
+      <stop offset="1" stop-color="#8E3F12"></stop>
+    </radialGradient>
+    <clipPath id="squircle">
+      <rect x="0" y="0" width="1024" height="1024" rx="230" ry="230"></rect>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#squircle)">
+    
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#parchment)"></rect>
+
+    
+    <rect x="180" y="280" width="664" height="464" rx="18" ry="18" fill="#FFFBF4" stroke="#3A3024" stroke-opacity="0.18" stroke-width="3"></rect>
+
+    
+    <path d="M180 280 L512 540 L844 280" fill="none" stroke="#3A3024" stroke-opacity="0.32" stroke-width="4"></path>
+    <path d="M180 744 L420 530" fill="none" stroke="#3A3024" stroke-opacity="0.18" stroke-width="3"></path>
+    <path d="M844 744 L604 530" fill="none" stroke="#3A3024" stroke-opacity="0.18" stroke-width="3"></path>
+
+    
+    <circle cx="512" cy="540" r="92" fill="url(#seal)"></circle>
+    <circle cx="512" cy="540" r="80" fill="none" stroke="#8E3F12" stroke-width="3" stroke-opacity="0.5"></circle>
+
+    
+    <path d="M540 510&#xA;             c -10 -12 -30 -14 -44 -6&#xA;             c -14 7 -18 22 -8 32&#xA;             c 6 6 18 8 28 10&#xA;             c 14 4 28 8 28 22&#xA;             c 0 12 -12 22 -30 22&#xA;             c -16 0 -30 -8 -36 -18" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"></path>
+  </g>
+</svg>
