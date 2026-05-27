@@ -200,11 +200,12 @@
 				};
 			};
 			buildConfigurationList = 32340EAC2FC4E46900AAB418 /* Build configuration list for PBXProject "Scadenza" */;
-			developmentRegion = en;
+			developmentRegion = it;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 32340EA82FC4E46900AAB418;
 			minimizedProjectReferenceProxies = 1;
