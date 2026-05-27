@@ -1,0 +1,113 @@
+# Swift 6 · SwiftUI · iOS 17+
+
+# ── Excluded paths ────────────────────────────────────────────────────────────
+excluded:
+  - .build
+  - DerivedData
+  - Pods
+  - Packages               # local SPM packages with their own lint config
+  - "*/GeneratedMocks/*"   # Sourcery / Mockolo output
+
+# ── Opt-in rules ──────────────────────────────────────────────────────────────
+
+opt_in_rules:
+  # Correctness
+  - force_unwrapping              # ❌ source of most iOS crashes; set to error below
+  - implicitly_unwrapped_optional # only IBOutlets should need this
+  
+
+  # Modern Swift
+  - prefer_self_in_static_references   # Self.foo over TypeName.foo inside the type
+  - redundant_self          # remove redundant self. in non-escaping closures
+  - explicit_init                      # MyType() over MyType.init()
+
+
+  # Code clarity
+  - extension_access_modifier     # one ACL on the extension, not on every member
+  - explicit_enum_raw_value       # no implicit 0, 1, 2… raw values
+  - trailing_closure              # idiomatic trailing closure syntax
+
+# ── Disabled rules ────────────────────────────────────────────────────────────
+# Turning off default rules that generate noise without improving code quality.
+
+disabled_rules:
+  - todo                          # TODOs belong in issue tracker, not SwiftLint
+  - multiple_closures_with_trailing_closure  # common and readable pattern in SwiftUI
+
+# ── Rule configuration ────────────────────────────────────────────────────────
+# Only rules whose thresholds differ from SwiftLint defaults are listed.
+
+line_length:
+  warning: 120
+  error: 160
+  ignores_urls: true
+  ignores_comments: true
+
+file_length:
+  warning: 400
+  error: 600
+
+type_body_length:
+  warning: 200    # default 250 — tighten to encourage decomposition
+  error: 350
+
+function_body_length:
+  warning: 40
+  error: 80
+
+function_parameter_count:
+  warning: 5
+  error: 8        # >5 params → consider a value type or builder pattern
+
+cyclomatic_complexity:
+  warning: 10
+  error: 15
+
+nesting:
+  type_level:
+    warning: 2
+  function_level:
+    warning: 3
+
+force_unwrapping:
+  severity: error  # not a warning — it's a crash waiting to happen
+
+implicitly_unwrapped_optional:
+  mode: all_except_iboutlets
+
+identifier_name:
+  excluded: [id, x, y, z, i, j]
+
+trailing_comma:
+  mandatory_comma: true  # cleaner multi-line diffs
+
+vertical_whitespace:
+  max_empty_lines: 1
+
+# ── Custom rules ──────────────────────────────────────────────────────────────
+
+custom_rules:
+
+  prefer_logger_over_nslog:
+    name: "Prefer Logger over NSLog"
+    regex: '\bNSLog\s*\('
+    message: "Use os.Logger for structured, categorized logging."
+    severity: warning
+
+  avoid_dispatch_main_async:
+    name: "Prefer MainActor over DispatchQueue.main.async"
+    regex: 'DispatchQueue\.main\.async\s*\{'
+    message: "Use await MainActor.run { } or @MainActor in async contexts."
+    severity: warning
+
+  no_task_detached_without_comment:
+    name: "Task.detached requires justification"
+    regex: 'Task\.detached\s*\{'
+    message: "Task.detached escapes structured concurrency. Add a comment explaining why."
+    severity: warning
+
+  foundation_models_needs_availability:
+    name: "LanguageModelSession needs availability check"
+    regex: 'LanguageModelSession\s*\('
+    message: "Guard on SystemLanguageModel.default.availability before creating a session."
+    severity: warning
