@@ -5,11 +5,14 @@
 //  Created by Dmytro Ipatii on 02/06/2026.
 //
 
-import Foundation
 import Repository
 import Entity
 
-public struct FetchGreetingUseCase: Sendable{
+public protocol FetchGreetingUseCaseProtocol {
+    func callAsFunction() async throws -> Greeting
+}
+
+public struct FetchGreetingUseCase: Sendable, FetchGreetingUseCaseProtocol {
     private let repository: GreetingRepositoryProtocol
 
     public init(repository: GreetingRepositoryProtocol) {

@@ -14,9 +14,9 @@ import UseCase
 import Presentation
 
 @MainActor
-public final class AppContainer{
+public final class AppContainer {
 
-    public init(){
+    public init() {
 
     }
     
@@ -28,4 +28,3 @@ public final class AppContainer{
         return GreetingView(viewModel: greetingViewModel)
     }
 }
-

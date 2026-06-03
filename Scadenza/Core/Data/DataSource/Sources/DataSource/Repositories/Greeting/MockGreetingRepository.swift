@@ -11,7 +11,9 @@ import Entity
 
 public struct MockGreetingRepository: Sendable, GreetingRepositoryProtocol {
 
-    public init(){}
+    public init() {
+
+    }
 
     public func fetchGreeting() async throws -> Greeting {
         try await Task.sleep(for: .seconds(2))

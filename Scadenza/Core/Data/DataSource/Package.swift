@@ -10,8 +10,8 @@ let package = Package(
         .library(name: "DataSource", targets: ["DataSource"]),
     ],
     dependencies: [
-        .package(path: "../Domain/Repository"),
-        .package(path: "../Domain/Entity"),
+        .package(path: "../../Domain/Repository"),
+        .package(path: "../../Domain/Entity"),
     ],
     targets: [
         .target(

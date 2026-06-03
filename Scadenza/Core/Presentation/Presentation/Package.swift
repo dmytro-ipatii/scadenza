@@ -13,8 +13,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../Domain/Entity"),
-        .package(path: "../Domain/UseCase"),
+        .package(path: "../../Domain/Entity"),
+        .package(path: "../../Domain/UseCase"),
     ],
     targets: [
         .target(
