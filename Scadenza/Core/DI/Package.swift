@@ -22,7 +22,7 @@ let package = Package(
         .package(path: "../Domain/UseCase"),
 
         // Presentation
-        .package(path: "../Presentation"),
+        .package(path: "../Presentation/Presentation"),
     ],
     targets: [
         .target(
