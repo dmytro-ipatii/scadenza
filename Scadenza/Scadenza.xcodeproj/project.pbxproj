@@ -8,34 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3204AA582FC78E5000B89A66 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3204AA4F2FC78E5000B89A66 /* .swiftlint.yml */; };
+		32668E0E2FCF3D56005AB6DC /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = 32668E0D2FCF3D56005AB6DC /* DI */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		32340EBF2FC4E46B00AAB418 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32340EA92FC4E46900AAB418 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32340EB02FC4E46900AAB418;
-			remoteInfo = Scadenza;
-		};
-		32340EC92FC4E46B00AAB418 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32340EA92FC4E46900AAB418 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32340EB02FC4E46900AAB418;
-			remoteInfo = Scadenza;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3204AA4F2FC78E5000B89A66 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		32340EB12FC4E46900AAB418 /* Scadenza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scadenza.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		32340EBE2FC4E46B00AAB418 /* ScadenzaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScadenzaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32340EC82FC4E46B00AAB418 /* ScadenzaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScadenzaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3204A9C02FC5CF6800B89A66 /* Exceptions for "Scadenza" folder in "Scadenza" target */ = {
+		3204A9C02FC5CF6800B89A66 /* Exceptions for "App" folder in "Scadenza" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -45,22 +27,17 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		32340EB32FC4E46900AAB418 /* Scadenza */ = {
+		32340EB32FC4E46900AAB418 /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				3204A9C02FC5CF6800B89A66 /* Exceptions for "Scadenza" folder in "Scadenza" target */,
+				3204A9C02FC5CF6800B89A66 /* Exceptions for "App" folder in "Scadenza" target */,
 			);
-			path = Scadenza;
+			path = App;
 			sourceTree = "<group>";
 		};
-		32340EC12FC4E46B00AAB418 /* ScadenzaTests */ = {
+		32779A582FCD7CAD001EF4FA /* Core */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ScadenzaTests;
-			sourceTree = "<group>";
-		};
-		32340ECB2FC4E46B00AAB418 /* ScadenzaUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ScadenzaUITests;
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -70,33 +47,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32340EBB2FC4E46B00AAB418 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32340EC52FC4E46B00AAB418 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				32668E0E2FCF3D56005AB6DC /* DI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32131C5A2FCD9B79007AFD83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		32340EA82FC4E46900AAB418 = {
 			isa = PBXGroup;
 			children = (
 				3204AA4F2FC78E5000B89A66 /* .swiftlint.yml */,
-				32340EB32FC4E46900AAB418 /* Scadenza */,
-				32340EC12FC4E46B00AAB418 /* ScadenzaTests */,
-				32340ECB2FC4E46B00AAB418 /* ScadenzaUITests */,
+				32779A582FCD7CAD001EF4FA /* Core */,
+				32340EB32FC4E46900AAB418 /* App */,
+				32131C5A2FCD9B79007AFD83 /* Frameworks */,
 				32340EB22FC4E46900AAB418 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				32340EB12FC4E46900AAB418 /* Scadenza.app */,
-				32340EBE2FC4E46B00AAB418 /* ScadenzaTests.xctest */,
-				32340EC82FC4E46B00AAB418 /* ScadenzaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,60 +97,16 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				32340EB32FC4E46900AAB418 /* Scadenza */,
+				32340EB32FC4E46900AAB418 /* App */,
+				32779A582FCD7CAD001EF4FA /* Core */,
 			);
 			name = Scadenza;
 			packageProductDependencies = (
+				32668E0D2FCF3D56005AB6DC /* DI */,
 			);
 			productName = Scadenza;
 			productReference = 32340EB12FC4E46900AAB418 /* Scadenza.app */;
 			productType = "com.apple.product-type.application";
-		};
-		32340EBD2FC4E46B00AAB418 /* ScadenzaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32340ED52FC4E46B00AAB418 /* Build configuration list for PBXNativeTarget "ScadenzaTests" */;
-			buildPhases = (
-				32340EBA2FC4E46B00AAB418 /* Sources */,
-				32340EBB2FC4E46B00AAB418 /* Frameworks */,
-				32340EBC2FC4E46B00AAB418 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32340EC02FC4E46B00AAB418 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				32340EC12FC4E46B00AAB418 /* ScadenzaTests */,
-			);
-			name = ScadenzaTests;
-			packageProductDependencies = (
-			);
-			productName = ScadenzaTests;
-			productReference = 32340EBE2FC4E46B00AAB418 /* ScadenzaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		32340EC72FC4E46B00AAB418 /* ScadenzaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32340ED82FC4E46B00AAB418 /* Build configuration list for PBXNativeTarget "ScadenzaUITests" */;
-			buildPhases = (
-				32340EC42FC4E46B00AAB418 /* Sources */,
-				32340EC52FC4E46B00AAB418 /* Frameworks */,
-				32340EC62FC4E46B00AAB418 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32340ECA2FC4E46B00AAB418 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				32340ECB2FC4E46B00AAB418 /* ScadenzaUITests */,
-			);
-			name = ScadenzaUITests;
-			packageProductDependencies = (
-			);
-			productName = ScadenzaUITests;
-			productReference = 32340EC82FC4E46B00AAB418 /* ScadenzaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -196,14 +121,6 @@
 					32340EB02FC4E46900AAB418 = {
 						CreatedOnToolsVersion = 26.5;
 					};
-					32340EBD2FC4E46B00AAB418 = {
-						CreatedOnToolsVersion = 26.5;
-						TestTargetID = 32340EB02FC4E46900AAB418;
-					};
-					32340EC72FC4E46B00AAB418 = {
-						CreatedOnToolsVersion = 26.5;
-						TestTargetID = 32340EB02FC4E46900AAB418;
-					};
 				};
 			};
 			buildConfigurationList = 32340EAC2FC4E46900AAB418 /* Build configuration list for PBXProject "Scadenza" */;
@@ -217,6 +134,7 @@
 			mainGroup = 32340EA82FC4E46900AAB418;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				32668E0C2FCF3D56005AB6DC /* XCLocalSwiftPackageReference "Core/DI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 32340EB22FC4E46900AAB418 /* Products */;
@@ -224,8 +142,6 @@
 			projectRoot = "";
 			targets = (
 				32340EB02FC4E46900AAB418 /* Scadenza */,
-				32340EBD2FC4E46B00AAB418 /* ScadenzaTests */,
-				32340EC72FC4E46B00AAB418 /* ScadenzaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,20 +152,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3204AA582FC78E5000B89A66 /* .swiftlint.yml in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32340EBC2FC4E46B00AAB418 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32340EC62FC4E46B00AAB418 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,34 +187,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32340EBA2FC4E46B00AAB418 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32340EC42FC4E46B00AAB418 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32340EC02FC4E46B00AAB418 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32340EB02FC4E46900AAB418 /* Scadenza */;
-			targetProxy = 32340EBF2FC4E46B00AAB418 /* PBXContainerItemProxy */;
-		};
-		32340ECA2FC4E46B00AAB418 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32340EB02FC4E46900AAB418 /* Scadenza */;
-			targetProxy = 32340EC92FC4E46B00AAB418 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		32340ED02FC4E46B00AAB418 /* Debug */ = {
@@ -449,7 +324,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Scadenza/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Scadenza;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -494,7 +369,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Scadenza/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Scadenza;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -526,90 +401,6 @@
 			};
 			name = Release;
 		};
-		32340ED62FC4E46B00AAB418 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3YN7552CQJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.scadenza.ScadenzaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scadenza.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scadenza";
-			};
-			name = Debug;
-		};
-		32340ED72FC4E46B00AAB418 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3YN7552CQJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.scadenza.ScadenzaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scadenza.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scadenza";
-			};
-			name = Release;
-		};
-		32340ED92FC4E46B00AAB418 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3YN7552CQJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.scadenza.ScadenzaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Scadenza;
-			};
-			name = Debug;
-		};
-		32340EDA2FC4E46B00AAB418 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3YN7552CQJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.scadenza.ScadenzaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Scadenza;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -631,25 +422,21 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32340ED52FC4E46B00AAB418 /* Build configuration list for PBXNativeTarget "ScadenzaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32340ED62FC4E46B00AAB418 /* Debug */,
-				32340ED72FC4E46B00AAB418 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		32340ED82FC4E46B00AAB418 /* Build configuration list for PBXNativeTarget "ScadenzaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32340ED92FC4E46B00AAB418 /* Debug */,
-				32340EDA2FC4E46B00AAB418 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		32668E0C2FCF3D56005AB6DC /* XCLocalSwiftPackageReference "Core/DI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Core/DI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32668E0D2FCF3D56005AB6DC /* DI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32340EA92FC4E46900AAB418 /* Project object */;
 }

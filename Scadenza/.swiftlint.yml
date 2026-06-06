@@ -111,3 +111,10 @@ custom_rules:
     regex: 'LanguageModelSession\s*\('
     message: "Guard on SystemLanguageModel.default.availability before creating a session."
     severity: warning
+
+  presentation_no_repository:
+    name: "Presentation must not import Repository"
+    regex: "^import Repository"
+    included: ".*/Presentation/.*\\.swift"
+    message: "Presentation layer cannot import Repository directly"
+    severity: error

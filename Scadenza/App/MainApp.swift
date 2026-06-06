@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import DI
 
 @main
-struct ScadenzaApp: App {
+struct MainApp: App {
+    private let container = AppContainer()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainAppView(container: container)
         }
     }
 }
