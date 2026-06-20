@@ -24,7 +24,6 @@ opt_in_rules:
 
   # Code clarity
   - extension_access_modifier     # one ACL on the extension, not on every member
-  - explicit_enum_raw_value       # no implicit 0, 1, 2… raw values
   - trailing_closure              # idiomatic trailing closure syntax
 
 # ── Disabled rules ────────────────────────────────────────────────────────────
