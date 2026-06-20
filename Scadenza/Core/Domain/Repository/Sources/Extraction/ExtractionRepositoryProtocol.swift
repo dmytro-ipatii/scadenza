@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ExtractionRepositoryProtocol.swift
 //  Repository
 //
 //  Created by Dmytro Ipatii on 17/06/2026.
@@ -8,7 +8,7 @@
 import Foundation
 import Entity
 
-public protocol ExtractionRepositoryProtocol {
+public protocol ExtractionRepositoryProtocol: Sendable {
 
     var availability: ExtractorAvailability { get async }
 

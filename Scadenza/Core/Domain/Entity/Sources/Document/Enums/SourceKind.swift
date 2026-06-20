@@ -10,4 +10,5 @@ public enum SourceKind: String, Sendable, CaseIterable {
     case photoLibrary
     case pdfImport
     case textImport
+    case manualInput
 }

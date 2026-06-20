@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AssetRepositoryProtocol.swift
 //  Repository
 //
 //  Created by Dmytro Ipatii on 17/06/2026.
@@ -8,7 +8,7 @@
 import Foundation
 import Entity
 
-public protocol AssetRepositoryProtocol {
+public protocol AssetRepositoryProtocol: Sendable {
 
     func store(_ data: Data, kind: AssetKind, fileName: String) async throws -> AssetReference
 
