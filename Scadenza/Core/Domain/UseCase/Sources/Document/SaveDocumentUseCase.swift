@@ -9,7 +9,7 @@ import Repository
 import Entity
 
 public protocol SaveDocumentUseCaseProtocol: Sendable {
-    func callAsFunction(_ document: Document) async throws
+    func callAsFunction(_ document: Document) async throws(PersistenceError)
 }
 
 public struct SaveDocumentUseCase: SaveDocumentUseCaseProtocol, Sendable {
@@ -20,7 +20,7 @@ public struct SaveDocumentUseCase: SaveDocumentUseCaseProtocol, Sendable {
         self.persistence = persistence
     }
 
-    public func callAsFunction(_ document: Document) async throws {
+    public func callAsFunction(_ document: Document) async throws(PersistenceError) {
         try await persistence.save(document)
     }
 

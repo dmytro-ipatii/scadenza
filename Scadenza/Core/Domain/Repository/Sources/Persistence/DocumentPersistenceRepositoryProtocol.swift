@@ -10,12 +10,12 @@ import Entity
 
 public protocol DocumentPersistenceRepositoryProtocol: Sendable {
 
-    func save(_ document: Document) async throws
-    func update(_ document: Document) async throws
-    func delete(_ documentID: DocumentID) async throws
+    func save(_ document: Document) async throws(PersistenceError)
+    func update(_ document: Document) async throws(PersistenceError)
+    func delete(_ documentID: DocumentID) async throws(PersistenceError)
 
-    func fetch(by id: DocumentID) async throws -> Document?
-    func fetchAll() async throws -> [Document]
-    func fetchUpcoming(within days: Int, now: Date) async throws -> [UpcomingDeadline]
-    func search(_ query: String) async throws -> [Document]
+    func fetch(by id: DocumentID) async throws(PersistenceError) -> Document?
+    func fetchAll() async throws(PersistenceError) -> [Document]
+    func fetchUpcoming(within days: Int, now: Date) async throws(PersistenceError) -> [UpcomingDeadline]
+    func search(_ query: String) async throws(PersistenceError) -> [Document]
 }

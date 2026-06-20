@@ -9,7 +9,7 @@ import Repository
 import Entity
 
 public protocol DeleteDocumentUseCaseProtocol: Sendable {
-    func callAsFunction(_ documentId: DocumentID) async throws
+    func callAsFunction(_ documentId: DocumentID) async throws(PersistenceError)
 }
 
 public struct DeleteDocumentUseCase: DeleteDocumentUseCaseProtocol, Sendable {
@@ -19,7 +19,7 @@ public struct DeleteDocumentUseCase: DeleteDocumentUseCaseProtocol, Sendable {
         self.persistence = persistence
     }
 
-    public func callAsFunction(_ documentId: DocumentID) async throws {
+    public func callAsFunction(_ documentId: DocumentID) async throws(PersistenceError) {
         try await persistence.delete(documentId)
     }
 }

@@ -9,7 +9,7 @@ import Repository
 import Entity
 
 public protocol LoadInboxUseCaseProtocol: Sendable {
-    func callAsFunction() async throws -> [DocumentCategory]
+    func callAsFunction() async throws(PersistenceError) -> [DocumentCategory]
 }
 
 public struct LoadInboxUseCase: LoadInboxUseCaseProtocol, Sendable {
@@ -19,7 +19,7 @@ public struct LoadInboxUseCase: LoadInboxUseCaseProtocol, Sendable {
         self.persistence = persistence
     }
 
-    public func callAsFunction() async throws -> [DocumentCategory] {
+    public func callAsFunction() async throws(PersistenceError) -> [DocumentCategory] {
 
         let documents = try await persistence.fetchAll()
         let grouped = Dictionary(grouping: documents, by: \.kind)

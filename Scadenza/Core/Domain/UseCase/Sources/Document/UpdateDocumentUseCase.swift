@@ -9,7 +9,7 @@ import Repository
 import Entity
 
 public protocol UpdateDocumentUseCaseProtocol: Sendable {
-    func callAsFunction(_ document: Document) async throws
+    func callAsFunction(_ document: Document) async throws((PersistenceError))
 }
 
 public struct UpdateDocumentUseCase: UpdateDocumentUseCaseProtocol, Sendable {
@@ -19,7 +19,7 @@ public struct UpdateDocumentUseCase: UpdateDocumentUseCaseProtocol, Sendable {
         self.persistence = persistence
     }
 
-    public func callAsFunction(_ document: Document) async throws {
+    public func callAsFunction(_ document: Document) async throws(PersistenceError) {
         try await persistence.update(document)
     }
 }
