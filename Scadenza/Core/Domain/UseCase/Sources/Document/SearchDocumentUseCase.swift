@@ -9,7 +9,7 @@ import Repository
 import Entity
 
 public protocol SearchDocumentUseCaseProtocol: Sendable {
-    func callAsFunction(_ query: String) async throws -> [Document]
+    func callAsFunction(_ query: String) async throws(PersistenceError) -> [Document]
 }
 
 public struct SearchDocumentUseCase: SearchDocumentUseCaseProtocol, Sendable {
@@ -19,7 +19,7 @@ public struct SearchDocumentUseCase: SearchDocumentUseCaseProtocol, Sendable {
         self.persistence = persistence
     }
 
-    public func callAsFunction(_ query: String) async throws -> [Document] {
+    public func callAsFunction(_ query: String) async throws(PersistenceError) -> [Document] {
         return try await persistence.search(query)
     }
 }

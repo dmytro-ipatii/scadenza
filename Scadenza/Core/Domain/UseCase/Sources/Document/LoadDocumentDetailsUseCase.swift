@@ -9,7 +9,7 @@ import Entity
 import Repository
 
 public protocol LoadDocumentDetailsUseCaseProtocol: Sendable {
-    func callAsFunction(_ documentId: DocumentID) async throws -> Document?
+    func callAsFunction(_ documentId: DocumentID) async throws(PersistenceError) -> Document?
 }
 
 public struct LoadDocumentDetailsUseCase: LoadDocumentDetailsUseCaseProtocol, Sendable {
@@ -19,7 +19,7 @@ public struct LoadDocumentDetailsUseCase: LoadDocumentDetailsUseCaseProtocol, Se
         self.persistence = persistence
     }
 
-    public func callAsFunction(_ documentId: DocumentID) async throws -> Document? {
+    public func callAsFunction(_ documentId: DocumentID) async throws(PersistenceError) -> Document? {
         return try await persistence.fetch(by: documentId)
     }
 }

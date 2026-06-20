@@ -10,7 +10,11 @@ import Repository
 import Entity
 
 public protocol LoadUpcomingDeadlinesUseCaseProtocol: Sendable {
-    func callAsFunction(within days: Int, now: Date, calendar: Calendar) async throws -> UpcomingDeadlines
+    func callAsFunction(
+        within days: Int,
+        now: Date,
+        calendar: Calendar
+    ) async throws(PersistenceError) -> UpcomingDeadlines
 }
 
 public struct LoadUpcomingDeadlinesUseCase: LoadUpcomingDeadlinesUseCaseProtocol, Sendable {
@@ -20,7 +24,11 @@ public struct LoadUpcomingDeadlinesUseCase: LoadUpcomingDeadlinesUseCaseProtocol
         self.persistence = persistence
     }
 
-    public func callAsFunction(within days: Int, now: Date, calendar: Calendar) async throws -> UpcomingDeadlines {
+    public func callAsFunction(
+        within days: Int,
+        now: Date,
+        calendar: Calendar
+    ) async throws(PersistenceError) -> UpcomingDeadlines {
 
         let deadlines = try await persistence.fetchUpcoming(within: days, now: now)
 
