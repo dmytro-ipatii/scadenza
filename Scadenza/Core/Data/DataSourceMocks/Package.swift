@@ -4,23 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "DataSource",
+    name: "DataSourceMocks",
     platforms: [.iOS(.v26)],
     products: [
-        .library(name: "DataSource", targets: ["DataSource"]),
+        .library(
+            name: "DataSourceMocks",
+            targets: ["DataSourceMocks"]
+        ),
     ],
     dependencies: [
-        .package(path: "../../Domain/Repository"),
         .package(path: "../../Domain/Entity"),
-        // .package(path: "../DataSourceMocks"),
+        .package(path: "../../Domain/Repository"),
     ],
     targets: [
         .target(
-            name: "DataSource",
+            name: "DataSourceMocks",
             dependencies: [
-                .product(name: "Repository", package: "Repository"),
                 .product(name: "Entity", package: "Entity"),
-            ],
+                .product(name: "Repository", package: "Repository"),
+            ]
         ),
 
     ],
