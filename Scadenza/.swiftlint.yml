@@ -2,11 +2,11 @@
 
 # ── Excluded paths ────────────────────────────────────────────────────────────
 excluded:
-  - .build
-  - DerivedData
+  - "**/.build"            # matches nested SPM build dirs, not just the root
+  - "**/DerivedData"
+  - "**/.swiftpm"
   - Pods
-  - Packages               # local SPM packages with their own lint config
-  - "*/GeneratedMocks/*"   # Sourcery / Mockolo output
+  - "**/GeneratedMocks/**"
 
 # ── Opt-in rules ──────────────────────────────────────────────────────────────
 
