@@ -13,7 +13,7 @@ public extension AssetReference {
         id: AssetReferenceID = AssetReferenceID(),
         kind: AssetKind,
         relativePath: String = "",
-        mimeType: String, // TODO: Create an enum types
+        mimeType: MIMETypeOption,
         createdAt: Date = .now,
     ) -> AssetReference {
 
@@ -33,7 +33,7 @@ public extension AssetReference {
         return fixture(
             id: id,
             kind: .pdf,
-            mimeType: "application/pdf",
+            mimeType: .pdf,
             createdAt: createdAt
         )
     }
@@ -45,7 +45,7 @@ public extension AssetReference {
         return fixture(
             id: id,
             kind: .image,
-            mimeType: "image/jpeg",
+            mimeType: .jped,
             createdAt: createdAt
         )
     }
@@ -58,7 +58,7 @@ public extension AssetReference {
         return fixture(
             id: id,
             kind: .text,
-            mimeType: "text/plain",
+            mimeType: .plainText,
             createdAt: createdAt
         )
     }
