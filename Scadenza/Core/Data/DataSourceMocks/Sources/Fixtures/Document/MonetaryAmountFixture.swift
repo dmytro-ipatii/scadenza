@@ -12,7 +12,7 @@ public extension MonetaryAmount {
 
     static func fixture(
         value: Decimal = 0.0,
-        currencyCode: String = "EUR" // TODO: Assign values to an enum
+        currencyCode: CurrencyCodeOption = .eur
     ) -> MonetaryAmount {
         return MonetaryAmount(
             value: value,

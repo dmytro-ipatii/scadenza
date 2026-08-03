@@ -5,8 +5,6 @@
 //  Created by Dmytro Ipatii on 03/08/2026.
 //
 
-import Foundation
-
 public enum MIMETypeOption: String, Codable, Sendable, CaseIterable, Hashable {
 
     // Images

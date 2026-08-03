@@ -9,11 +9,11 @@ import Foundation
 
 public struct MonetaryAmount: Sendable, Hashable {
     public let value: Decimal
-    public let currencyCode: String // ISO 4217
+    public let currencyCode: CurrencyCodeOption // ISO 4217
 
     public init(
         value: Decimal,
-        currencyCode: String,
+        currencyCode: CurrencyCodeOption,
     ) {
         self.value = value
         self.currencyCode = currencyCode
