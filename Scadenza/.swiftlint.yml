@@ -7,6 +7,7 @@ excluded:
   - "**/.swiftpm"
   - Pods
   - "**/GeneratedMocks/**"
+  - "**/Tests/**"
 
 # ── Opt-in rules ──────────────────────────────────────────────────────────────
 

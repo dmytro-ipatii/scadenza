@@ -19,12 +19,8 @@ public final class AppContainer {
     public init() {
 
     }
-    
-    public func makeGreetingView() -> some View {
-        let repository = MockGreetingRepository()
-        let fetchGreetingUseCase = FetchGreetingUseCase(repository: repository)
-        let greetingViewModel = GreetingViewModel(fetchGreetingUseCase: fetchGreetingUseCase)
 
-        return GreetingView(viewModel: greetingViewModel)
+    public func makeGreetingView() -> some View {
+        return GreetingView()
     }
 }
