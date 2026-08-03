@@ -88,7 +88,7 @@ public actor InMemoryDocumentPersistenceRepository: DocumentPersistenceRepositor
             throw failure
         }
 
-        guard query.isEmpty else { return [] }
+        guard !query.trimmingCharacters(in: .whitespaces).isEmpty && !query.isEmpty else { return [] }
 
         return storage.values.filter { $0.rawText.localizedStandardContains(query)
             || $0.counterparty?.localizedStandardContains(query) ?? false}
