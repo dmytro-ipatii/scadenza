@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "3D16480A-6DC6-4AA8-8742-3A908D060336",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "UseCaseTests",
+        "name" : "UseCaseTests"
+      }
+    }
+  ],
+  "version" : 1
+}

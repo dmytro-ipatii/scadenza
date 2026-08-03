@@ -107,6 +107,78 @@ public enum DocumentScenario {
             ),
         ]
     )
+
+    /// Italian electricity bill, imported as PDF. Fully populated — drives
+    /// search (rawText), the detail summary, and a scheduled reminder.
+    public static let completeUtilityBill = Document.fixture(
+        sourceKind: .pdfImport,
+        sourceReference: .pdfFixture(),
+        rawText: """
+        ENEL ENERGIA S.p.A.
+        Bolletta luce - Mercato Libero
+        Intestatario: Mario Rossi
+        Codice cliente: 1234567890
+        POD: IT001E1234567A
+        Periodo di fatturazione: 01/05/2026 - 31/05/2026
+        Consumo rilevato: 312 kWh
+        Importo totale da pagare: € 87,50
+        Modalita di pagamento: addebito diretto SDD
+        """,
+        detectedLanguages: ["IT"],
+        kind: .utilityBill,
+        counterparty: "Enel Energia",
+        totalAmount: .fixture(value: 87.50),
+        summary: "Bolletta Enel per l'energia elettrica di maggio 2026, importo 87,50 € con addebito SDD.",
+        recommendedAction: "Verifica che l'addebito SDD vada a buon fine entro la scadenza.",
+        dates: [.fixtureDue(by: .now.byAdding(days: 2))],
+        reminder: .fixture(leadTime: 60 * 60 * 24)
+    )
+
+    /// Italian tax notice, captured by camera. Larger amount, longer horizon.
+    public static let completeTaxNotice = Document.fixture(
+        sourceKind: .camera,
+        sourceReference: .imageFixture(),
+        rawText: """
+        AGENZIA DELLE ENTRATE
+        Avviso di pagamento - Modello F24
+        Contribuente: Mario Rossi
+        Codice fiscale: RSSMRA80A01H501U
+        Tributo: IMU saldo 2026 - codice tributo 3918
+        Importo dovuto: € 1.240,00
+        Effettuare il versamento tramite modello F24.
+        """,
+        detectedLanguages: ["IT"],
+        kind: .taxNotice,
+        counterparty: "Agenzia delle Entrate",
+        totalAmount: .fixture(value: 1240.00),
+        summary: "Avviso IMU dell'Agenzia delle Entrate, saldo 2026 pari a 1.240,00 € da versare con F24.",
+        recommendedAction: "Prepara il modello F24 e versa l'importo entro il termine indicato.",
+        dates: [.fixtureDue(by: .now.byAdding(days: 18))]
+    )
+
+    /// Insurance policy renewal, PDF from email. Exercises the renewal role.
+    public static let completeInsurancePolicy = Document.fixture(
+        sourceKind: .pdfImport,
+        sourceReference: .pdfFixture(),
+        rawText: """
+        GENERALI ITALIA S.p.A.
+        Polizza Auto - Responsabilita Civile
+        Contraente: Mario Rossi
+        Numero polizza: 0098765432
+        Veicolo: targa AB123CD
+        Premio annuo: € 450,00
+        La polizza e in scadenza: valutare il rinnovo.
+        """,
+        detectedLanguages: ["IT"],
+        kind: .insurancePolicy,
+        counterparty: "Generali",
+        totalAmount: .fixture(value: 450.00),
+        summary: "Polizza RC Auto Generali, premio annuo 450,00 €, in rinnovo ad agosto 2026.",
+        recommendedAction: "Decidi se rinnovare o confrontare altre offerte prima del rinnovo.",
+        dates: [.fixtureRenewal(in: .now.byAdding(days: 40))]
+    )
+
+
 }
 
 public extension DocumentScenario {
@@ -145,4 +217,11 @@ public extension DocumentScenario {
             )
         }
     }
+
+    /// All complete documents — use in Search / Detail previews and tests.
+    static let complete: [Document] = [
+        completeUtilityBill,
+        completeTaxNotice,
+        completeInsurancePolicy,
+    ]
 }

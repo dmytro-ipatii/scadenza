@@ -13,18 +13,18 @@ public struct Document: Sendable, Identifiable, Hashable {
     public let sourceKind: SourceKind
     public let sourceReference: AssetReference
 
-    public let rawText: String
+    public private(set) var rawText: String
     public let detectedLanguages: [String]
 
     public let kind: DocumentKind
-    public let counterparty: String?
+    public private(set) var counterparty: String?
     public let totalAmount: MonetaryAmount?
     public let summary: String
     public let recommendedAction: String
 
-    public let dates: [DateEntry]
-    public let reminder: Reminder?
-    public let isCompleted: Bool
+    public private(set) var dates: [DateEntry]
+    public private(set) var reminder: Reminder?
+    public private(set) var isCompleted: Bool
 
     public init(
         id: DocumentID,
@@ -56,5 +56,27 @@ public struct Document: Sendable, Identifiable, Hashable {
         self.dates = dates
         self.reminder = reminder
         self.isCompleted = isCompleted
+    }
+}
+
+public extension Document {
+    mutating func update(isCompleted: Bool) {
+        self.isCompleted = isCompleted
+    }
+
+    mutating func update(rawText: String) {
+        self.rawText = rawText
+    }
+
+    mutating func update(counterparty: String?) {
+        self.counterparty = counterparty
+    }
+
+    mutating func update(dates: [DateEntry]) {
+        self.dates = dates
+    }
+
+    mutating func update(reminder: Reminder?) {
+        self.reminder = reminder
     }
 }

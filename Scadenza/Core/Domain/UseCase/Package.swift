@@ -12,6 +12,7 @@ let package = Package(
     dependencies: [
         .package(path: "../Entity"),
         .package(path: "../Repository"),
+        .package(path: "../../Data/DataSourceMocks"),
     ],
     targets: [
         .target(
@@ -21,7 +22,15 @@ let package = Package(
                 .product(name: "Repository", package: "Repository"),
             ],
         ),
-
+        .testTarget(
+            name: "UseCaseTests",
+            dependencies: [
+                "UseCase",
+                .product(name: "Entity", package: "Entity"),
+                .product(name: "Repository", package: "Repository"),
+                .product(name: "DataSourceMocks", package: "DataSourceMocks"),
+            ]
+        ),
     ],
     swiftLanguageModes: [.v6]
 )
