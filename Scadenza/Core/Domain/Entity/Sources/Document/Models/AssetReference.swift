@@ -11,14 +11,14 @@ public struct AssetReference: Sendable, Identifiable, Hashable {
     public let id: AssetReferenceID
     public let kind: AssetKind
     public let relativePath: String
-    public let mimeType: String
+    public let mimeType: MIMETypeOption
     public let createdAt: Date
 
     public init(
         id: AssetReferenceID,
         kind: AssetKind,
         relativePath: String,
-        mimeType: String,
+        mimeType: MIMETypeOption,
         createdAt: Date,
     ) {
         self.id = id
