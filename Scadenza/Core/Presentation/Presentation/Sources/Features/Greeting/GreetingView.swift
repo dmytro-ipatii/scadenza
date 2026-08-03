@@ -8,33 +8,18 @@
 import SwiftUI
 
 public struct GreetingView: View {
-    @State private var viewModel: GreetingViewModel
 
-    public init(viewModel: GreetingViewModel) {
-        self._viewModel = State(wrappedValue: viewModel)
+    public init() {
+
     }
 
     public var body: some View {
         VStack {
-            switch viewModel.status {
-            case .idle, .loading:
-                ProgressView()
-            case .error(let description):
-                Text(description)
-                    .font(.headline)
-                    .foregroundStyle(.red)
-            case .success(let message):
-                Text(message)
-                    .font(.title)
-            }
+            Text("Hellow, World!")
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-        .onAppear(perform: viewModel.fetchGreeting)
     }
 }
 
-//#Preview {
-//    GreetingView(
-//        viewModel: GreetingViewModel(fetchGreetingUseCase: FetchGreetingUseCase())
-//    )
-//}
+#Preview {
+    GreetingView()
+}
