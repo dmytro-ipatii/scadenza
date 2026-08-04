@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../../Domain/Entity"),
+        .package(path: "../../Domain/EntityFixtures"),
         .package(path: "../../Domain/UseCase"),
     ],
     targets: [
@@ -21,6 +22,7 @@ let package = Package(
             name: "Presentation",
             dependencies: [
                 .product(name: "Entity", package: "Entity"),
+                .product(name: "EntityFixtures", package: "EntityFixtures"),
                 .product(name: "UseCase", package: "UseCase"),
             ],
         ),

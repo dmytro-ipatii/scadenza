@@ -20,7 +20,7 @@ public final class AppContainer {
 
     }
 
-    public func makeGreetingView() -> some View {
-        return GreetingView()
+    func createInoxView() -> some View {
+        InboxView()
     }
 }

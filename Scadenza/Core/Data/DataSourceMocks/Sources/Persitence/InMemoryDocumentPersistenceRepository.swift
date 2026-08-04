@@ -7,6 +7,7 @@
 
 import Foundation
 import Entity
+import EntityFixtures
 import Repository
 
 public actor InMemoryDocumentPersistenceRepository: DocumentPersistenceRepositoryProtocol {

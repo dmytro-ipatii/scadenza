@@ -12,7 +12,7 @@ struct MainAppView: View {
     let container: AppContainer
 
     var body: some View {
-        container.makeGreetingView()
+        Text("Hellow, World!")
         .padding()
     }
 }

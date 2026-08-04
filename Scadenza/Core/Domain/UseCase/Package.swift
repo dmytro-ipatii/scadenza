@@ -11,6 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Entity"),
+        .package(path: "../EntityFixtures"),
         .package(path: "../Repository"),
         .package(path: "../../Data/DataSourceMocks"),
     ],
@@ -27,6 +28,7 @@ let package = Package(
             dependencies: [
                 "UseCase",
                 .product(name: "Entity", package: "Entity"),
+                .product(name: "EntityFixtures", package: "EntityFixtures"),
                 .product(name: "Repository", package: "Repository"),
                 .product(name: "DataSourceMocks", package: "DataSourceMocks"),
             ]

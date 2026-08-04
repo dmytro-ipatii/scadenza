@@ -7,6 +7,7 @@
 
 import Testing
 import Entity
+import EntityFixtures
 import DataSourceMocks
 import UseCase
 
