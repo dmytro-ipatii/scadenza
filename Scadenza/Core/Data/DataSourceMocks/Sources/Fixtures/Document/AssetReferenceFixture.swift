@@ -45,7 +45,7 @@ public extension AssetReference {
         return fixture(
             id: id,
             kind: .image,
-            mimeType: .jped,
+            mimeType: .jpeg,
             createdAt: createdAt
         )
     }

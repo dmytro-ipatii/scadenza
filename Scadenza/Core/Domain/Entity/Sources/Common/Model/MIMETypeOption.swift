@@ -8,7 +8,7 @@
 public enum MIMETypeOption: String, Codable, Sendable, CaseIterable, Hashable {
 
     // Images
-    case jped = "image/jpeg"
+    case jpeg = "image/jpeg"
     case png = "image/png"
     case heic = "image/heic"
     case heif = "image/heif"

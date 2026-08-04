@@ -13,7 +13,7 @@ public extension MIMETypeOption {
 
     var fileExtension: String {
         switch self {
-        case .jped: "jped"
+        case .jpeg: "jpeg"
         case .png: "png"
         case .heic: "heic"
         case .heif: "heif"
