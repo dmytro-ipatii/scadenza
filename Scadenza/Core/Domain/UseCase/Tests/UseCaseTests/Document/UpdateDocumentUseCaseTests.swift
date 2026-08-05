@@ -7,6 +7,7 @@
 
 import Testing
 import Entity
+import EntityFixtures
 import DataSourceMocks
 import UseCase
 
@@ -19,7 +20,7 @@ struct UpdateDocumentUseCaseTests {
 
     init() {
         documents = DocumentScenario.many()
-        repository = InMemoryDocumentPersistenceRepository(seed: documents)
+        repository = InMemoryDocumentPersistenceRepository(documents: documents)
         sut = UpdateDocumentUseCase(persistence: repository)
     }
 

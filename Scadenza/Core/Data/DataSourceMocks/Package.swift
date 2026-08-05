@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../../Domain/Entity"),
+        .package(path: "../../Domain/EntityFixtures"),
         .package(path: "../../Domain/Repository"),
     ],
     targets: [
@@ -21,6 +22,7 @@ let package = Package(
             name: "DataSourceMocks",
             dependencies: [
                 .product(name: "Entity", package: "Entity"),
+                .product(name: "EntityFixtures", package: "EntityFixtures"),
                 .product(name: "Repository", package: "Repository"),
             ]
         ),

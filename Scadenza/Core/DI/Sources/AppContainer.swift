@@ -12,6 +12,7 @@ import Entity
 import Repository
 import UseCase
 import Presentation
+import DataSourceMocks
 
 @MainActor
 public final class AppContainer {
@@ -20,7 +21,12 @@ public final class AppContainer {
 
     }
 
-    public func makeGreetingView() -> some View {
-        return GreetingView()
+    public func createInoxView() -> some View {
+
+        let persistanceRepository = InMemoryDocumentPersistenceRepository(documents: [])
+        let loadInboxUseCase = LoadInboxUseCase(persistence: persistanceRepository)
+        let viewModel = InboxViewModel(loadInbox: loadInboxUseCase)
+
+        return InboxView(viewModel: viewModel)
     }
 }

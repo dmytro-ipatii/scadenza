@@ -4,22 +4,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "DataSource",
+    name: "EntityFixtures",
     platforms: [.iOS(.v26)],
     products: [
-        .library(name: "DataSource", targets: ["DataSource"]),
+        .library(
+            name: "EntityFixtures",
+            targets: ["EntityFixtures"]
+        ),
     ],
     dependencies: [
-        .package(path: "../../Domain/Repository"),
-        .package(path: "../../Domain/Entity"),
+        .package(path: "../Entity")
     ],
     targets: [
+
         .target(
-            name: "DataSource",
+            name: "EntityFixtures",
             dependencies: [
-                .product(name: "Repository", package: "Repository"),
-                .product(name: "Entity", package: "Entity"),
-            ],
+                .product(name: "Entity", package: "Entity")
+            ]
         ),
 
     ],

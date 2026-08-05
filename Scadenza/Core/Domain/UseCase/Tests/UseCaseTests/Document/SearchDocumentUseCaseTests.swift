@@ -6,6 +6,7 @@
 //
 import Testing
 import Entity
+import EntityFixtures
 import DataSourceMocks
 import UseCase
 
@@ -50,7 +51,7 @@ struct SearchDocumentUseCaseTests {
             DocumentScenario.insuranceLater,
             DocumentScenario.completedReceipt,
         ]
-        self.repository = InMemoryDocumentPersistenceRepository(seed: documents)
+        self.repository = InMemoryDocumentPersistenceRepository(documents: documents)
         self.sut = SearchDocumentUseCase(persistence: repository)
     }
 

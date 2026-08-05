@@ -7,6 +7,7 @@
 
 import Testing
 import Entity
+import EntityFixtures
 import UseCase
 import DataSourceMocks
 
@@ -16,7 +17,7 @@ struct LoadInboxUseCaseTests {
     @Test
     func `Load inbox documents returns elements`() async throws {
         let documents = DocumentScenario.many()
-        let sut = LoadInboxUseCase(persistence: InMemoryDocumentPersistenceRepository(seed: documents))
+        let sut = LoadInboxUseCase(persistence: InMemoryDocumentPersistenceRepository(documents: documents))
 
         let categories = try await sut()
 
@@ -26,7 +27,7 @@ struct LoadInboxUseCaseTests {
     @Test
     func `Load inbox returns empty result`() async throws {
         let documents = DocumentScenario.empty
-        let sut = LoadInboxUseCase(persistence: InMemoryDocumentPersistenceRepository(seed: documents))
+        let sut = LoadInboxUseCase(persistence: InMemoryDocumentPersistenceRepository(documents: documents))
 
         let categories = try await sut()
 

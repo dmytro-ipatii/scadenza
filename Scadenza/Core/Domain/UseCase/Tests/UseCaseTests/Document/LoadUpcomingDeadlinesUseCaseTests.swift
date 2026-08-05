@@ -8,6 +8,7 @@
 import Foundation
 import Testing
 import Entity
+import EntityFixtures
 import DataSourceMocks
 @testable import UseCase
 

@@ -7,6 +7,7 @@
 
 import Testing
 import Entity
+import EntityFixtures
 import DataSourceMocks
 import UseCase
 
@@ -18,7 +19,7 @@ struct DeleteDocumentUseCaseTests {
 
     init() {
         documents = DocumentScenario.many()
-        repository = InMemoryDocumentPersistenceRepository(seed: documents)
+        repository = InMemoryDocumentPersistenceRepository(documents: documents)
         sut = DeleteDocumentUseCase(persistence: repository)
     }
 

@@ -7,6 +7,7 @@
 
 import Testing
 import Entity
+import EntityFixtures
 import DataSourceMocks
 import UseCase
 
@@ -18,7 +19,7 @@ struct LoadDocumentDetailsUseCaseTests {
         let documents = DocumentScenario.many()
         let targetDocumentId = try #require(documents.first).id
 
-        let repository = InMemoryDocumentPersistenceRepository(seed: documents)
+        let repository = InMemoryDocumentPersistenceRepository(documents: documents)
         let sut = LoadDocumentDetailsUseCase(persistence: repository)
 
         let document = try await sut(targetDocumentId)
@@ -32,7 +33,7 @@ struct LoadDocumentDetailsUseCaseTests {
         let documents = DocumentScenario.many()
         let targetDocumentId = try #require(documents.first).id
 
-        let repository = InMemoryDocumentPersistenceRepository(seed: documents)
+        let repository = InMemoryDocumentPersistenceRepository(documents: documents)
         let sut = LoadDocumentDetailsUseCase(persistence: repository)
 
         await repository.setFailure(.notFound)
