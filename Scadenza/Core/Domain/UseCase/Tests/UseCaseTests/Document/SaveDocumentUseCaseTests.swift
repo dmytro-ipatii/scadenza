@@ -17,7 +17,7 @@ struct SaveDocumentUseCaseTests {
     private let sut: SaveDocumentUseCase
 
     init() {
-        self.repository = InMemoryDocumentPersistenceRepository(seed: [])
+        self.repository = InMemoryDocumentPersistenceRepository(documents: [])
         self.sut = SaveDocumentUseCase(persistence: repository)
     }
 

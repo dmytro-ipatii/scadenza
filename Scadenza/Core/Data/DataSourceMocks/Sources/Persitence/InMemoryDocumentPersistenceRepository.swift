@@ -14,9 +14,9 @@ public actor InMemoryDocumentPersistenceRepository: DocumentPersistenceRepositor
     private var storage: [DocumentID: Document]
     private var failure: PersistenceError?
 
-    public init(seed: [Document] = []) {
+    public init(documents: [Document] = []) {
         self.storage = Dictionary(
-            seed.map {($0.id, $0)},
+            documents.map {($0.id, $0)},
             uniquingKeysWith: ({ (_, new) in new })
         )
     }

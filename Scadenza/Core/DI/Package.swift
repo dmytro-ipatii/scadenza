@@ -15,6 +15,7 @@ let package = Package(
     dependencies: [
         // Data
         .package(path: "../Data/DataSource"),
+        .package(path: "../Data/DataSourceMocks"),
 
         // Domain
         .package(path: "../Domain/Entity"),
@@ -30,6 +31,7 @@ let package = Package(
             dependencies: [
                 // Data
                 .product(name: "DataSource", package: "DataSource"),
+                .product(name: "DataSourceMocks", package: "DataSourceMocks"),
 
                 // Domain
                 .product(name: "Entity", package: "Entity"),

@@ -6,14 +6,40 @@
 //
 
 import SwiftUI
+import EntityFixtures
 
 public struct InboxView: View {
 
-    public init() {
+    @State private var viewModel: InboxViewModel
 
+    public init(viewModel: InboxViewModel) {
+        self._viewModel = State(wrappedValue: viewModel)
     }
 
     public var body: some View {
-        Text("Documents Inbox")
+
+        ZStack {
+
+            switch viewModel.state {
+            case .loading:
+                ProgressView()
+            case .loaded(documents: let documents):
+                Text("Documents count: \(documents.count)")
+            case .error(message: let errorMessage):
+                Text(errorMessage)
+                    .foregroundStyle(.red)
+            }
+        }
+        .task {
+            await viewModel.loadDocuments()
+        }
     }
+}
+
+#Preview("Load all data") {
+    InboxView(viewModel: .preview(outcome: .loaded(documents: DocumentCategoryScenario.complete)))
+}
+
+#Preview("Error loading data") {
+    InboxView(viewModel: .preview(outcome: .failed(.notFound)))
 }

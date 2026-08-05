@@ -12,7 +12,7 @@ struct MainAppView: View {
     let container: AppContainer
 
     var body: some View {
-        Text("Hellow, World!")
+        container.createInoxView()
         .padding()
     }
 }

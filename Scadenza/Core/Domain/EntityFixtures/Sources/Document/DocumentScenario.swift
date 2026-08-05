@@ -178,7 +178,6 @@ public enum DocumentScenario {
         dates: [.fixtureRenewal(in: .now.byAdding(days: 40))]
     )
 
-
 }
 
 public extension DocumentScenario {

@@ -19,7 +19,7 @@ struct DeleteDocumentUseCaseTests {
 
     init() {
         documents = DocumentScenario.many()
-        repository = InMemoryDocumentPersistenceRepository(seed: documents)
+        repository = InMemoryDocumentPersistenceRepository(documents: documents)
         sut = DeleteDocumentUseCase(persistence: repository)
     }
 
