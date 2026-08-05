@@ -8,7 +8,77 @@
 import Foundation
 import Entity
 
-public enum DocumentScenario {
+public enum DocumentScenario { // swiftlint:disable:this type_body_length
+
+    // Due today (date only) — belongs to "This Week"
+    public static let dueToday = Document.fixture(
+        kind: .utilityBill,
+        counterparty: "Fastweb",
+        dates: [
+            .fixtureDue(by: .now)
+        ]
+    )
+
+    // Due one hour ago — expired
+    public static let expiredOneHourAgo = Document.fixture(
+        kind: .receipt,
+        counterparty: "Amazon",
+        dates: [
+            .fixtureDue(by: .now.addingTimeInterval(-3600))
+        ]
+    )
+
+    // Due exactly at the end of this week
+    public static let endOfThisWeek = Document.fixture(
+        kind: .contract,
+        counterparty: "TIM",
+        dates: [
+            .fixtureDue(
+                by: Calendar.current.dateInterval(
+                    of: .weekOfYear,
+                    for: .now
+                )!.end // swiftlint:disable:this force_unwrapping
+            ),
+        ]
+    )
+
+    // Due at the first instant of next week
+    public static let startOfNextWeek = Document.fixture(
+        kind: .insurancePolicy,
+        counterparty: "Unipol",
+        dates: [
+            .fixtureDue(
+                by: Calendar.current.dateInterval(of: .weekOfYear, for: .now)!.end // swiftlint:disable:this force_unwrapping
+            )
+        ]
+    )
+
+    // Due at the end of next week
+    public static let endOfNextWeek = Document.fixture(
+        kind: .warranty,
+        counterparty: "Apple",
+        dates: [
+            .fixtureExpiration(
+                by: Calendar.current.date(
+                    byAdding: .weekOfYear,
+                    value: 1,
+                    to: Calendar.current.dateInterval(of: .weekOfYear, for: .now)!.end // swiftlint:disable:this force_unwrapping
+                )! // swiftlint:disable:this force_unwrapping
+            )
+        ]
+    )
+
+    // First document that belongs to "Later"
+    public static let firstLater = Document.fixture(
+        kind: .insurancePolicy,
+        counterparty: "AXA",
+        dates: [
+            .fixtureRenewal(
+                in: .now.byAdding(days: 15)
+            ),
+        ]
+    )
+
     // Overdue 3 days — folds into "This Week"
     public static let overdueUtilityBill = Document.fixture(
         kind: .utilityBill,
@@ -34,7 +104,7 @@ public enum DocumentScenario {
         ]
     )
     // Warranty expiring in 10 days — next week
-    public static let warrantyNextWeek = Document.fixture(
+    public static let expiringNextWeek = Document.fixture(
         kind: .warranty,
         counterparty: "DeLonghi",
         totalAmount: nil,
@@ -44,7 +114,7 @@ public enum DocumentScenario {
         ]
     )
     // Renewal 40 days out — later
-    public static let insuranceLater = Document.fixture(
+    public static let renewal40DaysOut = Document.fixture(
         kind: .insurancePolicy,
         counterparty: "Generali",
         totalAmount: .fixture(value: 450.00),
@@ -74,6 +144,28 @@ public enum DocumentScenario {
             ),
         ]
     )
+
+    // Multiple upcoming dates in different sections
+    public static let multipleUpcomingDates = Document.fixture(
+        kind: .contract,
+        counterparty: "Vodafone",
+        dates: [
+            .fixtureDue(by: .now.byAdding(days: 2)),
+            .fixtureRenewal(in: .now.byAdding(days: 10)),
+            .fixtureExpiration(by: .now.byAdding(days: 45))
+        ]
+    )
+
+    // Expired due date + future renewal
+    public static let mixedPastAndFuture = Document.fixture(
+        kind: .insurancePolicy,
+        counterparty: "Generali",
+        dates: [
+            .fixtureDue(by: .now.byAdding(days: -2)),
+            .fixtureRenewal(in: .now.byAdding(days: 30))
+        ]
+    )
+
     // Completed — must NOT appear in upcoming
     public static let completedReceipt = Document.fixture(
         kind: .receipt,
@@ -90,12 +182,14 @@ public enum DocumentScenario {
         ],
         isCompleted: true
     )
+
     // Sparse — missing optionals (no amount, no counterparty, no dates)
     public static let sparseManualNote = Document.fixture(
         counterparty: nil,
         totalAmount: nil,
         dates: []
     )
+
     // Long string — layout / Dynamic Type stress
     public static let longCounterparty = Document.fixture(
         counterparty: "Consorzio Nazionale Servizi Idrici e Ambientali del Territorio Metropolitano",
@@ -106,6 +200,25 @@ public enum DocumentScenario {
                     )
             ),
         ]
+    )
+
+    // No counterparty but with a due date
+    public static let anonymousDocument = Document.fixture(
+        kind: .other,
+        counterparty: nil,
+        dates: [
+            .fixtureDue(by: .now.byAdding(days: 4))
+        ]
+    )
+
+    // Reminder attached
+    public static let reminderScheduled = Document.fixture(
+        kind: .utilityBill,
+        counterparty: "Enel Energia",
+        dates: [
+            .fixtureDue(by: .now.byAdding(days: 3))
+        ],
+        reminder: .fixture(leadTime: 60 * 60 * 24 * 2)
     )
 
     /// Italian electricity bill, imported as PDF. Fully populated — drives
@@ -185,8 +298,8 @@ public extension DocumentScenario {
     static let inbox: [Document] = [
         overdueUtilityBill,
         dueThisWeek,
-        warrantyNextWeek,
-        insuranceLater,
+        expiringNextWeek,
+        renewal40DaysOut,
         multiDateContract,
         completedReceipt,
         sparseManualNote,

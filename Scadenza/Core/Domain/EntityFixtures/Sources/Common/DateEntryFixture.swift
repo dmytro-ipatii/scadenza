@@ -12,12 +12,14 @@ public extension DateEntry {
     static func fixture(
         id: DateEntryID = DateEntryID(),
         date: Date = .now,
+        hasTime: Bool = false,
         role: DateRole = .appointmentDate,
         isCompleted: Bool = false
     ) -> DateEntry {
         return DateEntry(
             id: id,
             date: date,
+            hasTime: hasTime,
             role: role,
             isCompleted: isCompleted,
         )

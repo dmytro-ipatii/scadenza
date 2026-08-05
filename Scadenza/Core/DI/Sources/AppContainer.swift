@@ -21,12 +21,7 @@ public final class AppContainer {
 
     }
 
-    public func createInoxView() -> some View {
-
-        let persistanceRepository = InMemoryDocumentPersistenceRepository(documents: [])
-        let loadInboxUseCase = LoadInboxUseCase(persistence: persistanceRepository)
-        let viewModel = InboxViewModel(loadInbox: loadInboxUseCase)
-
-        return InboxView(viewModel: viewModel)
+    public func createHomeScreen() -> some View {
+        return HomeScreenView()
     }
 }

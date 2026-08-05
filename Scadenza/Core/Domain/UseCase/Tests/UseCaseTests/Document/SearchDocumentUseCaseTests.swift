@@ -48,7 +48,7 @@ struct SearchDocumentUseCaseTests {
                     """,
                 counterparty: "Agenzia delle Entrate",
             ),
-            DocumentScenario.insuranceLater,
+            DocumentScenario.renewal40DaysOut,
             DocumentScenario.completedReceipt,
         ]
         self.repository = InMemoryDocumentPersistenceRepository(documents: documents)

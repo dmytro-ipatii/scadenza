@@ -50,7 +50,8 @@ public struct LoadUpcomingDeadlinesUseCase: LoadUpcomingDeadlinesUseCaseProtocol
             return UpcomingDeadlines(
                 thisWeek: [],
                 nextWeek: [],
-                later: deadlines
+                later: deadlines.filter { !$0.dateEntry.isExpired(now: .now, calendar: calendar) },
+                expired: deadlines.filter { $0.dateEntry.isExpired(now: .now, calendar: calendar) }
             )
         }
 
@@ -60,12 +61,15 @@ public struct LoadUpcomingDeadlinesUseCase: LoadUpcomingDeadlinesUseCaseProtocol
         var thisWeekDeadlines: [UpcomingDeadline] = []
         var nextWeekDeadlines: [UpcomingDeadline] = []
         var laterDeadlines: [UpcomingDeadline] = []
+        var expiredDeadlines: [UpcomingDeadline] = []
 
         for deadline in deadlines {
 
             let deadlineDate = deadline.dateEntry.date
 
-            if deadlineDate < endOfThisWeek {
+            if deadline.dateEntry.isExpired(now: now, calendar: calendar) {
+                expiredDeadlines.append(deadline)
+            } else if deadlineDate < endOfThisWeek {
                 thisWeekDeadlines.append(deadline)
             } else if deadlineDate < endOfTheNextWeek {
                 nextWeekDeadlines.append(deadline)
@@ -78,7 +82,8 @@ public struct LoadUpcomingDeadlinesUseCase: LoadUpcomingDeadlinesUseCaseProtocol
         return UpcomingDeadlines(
             thisWeek: thisWeekDeadlines.sortByDate(),
             nextWeek: nextWeekDeadlines.sortByDate(),
-            later: laterDeadlines.sortByDate()
+            later: laterDeadlines.sortByDate(),
+            expired: expiredDeadlines.sortByDate(),
         )
     }
 }
