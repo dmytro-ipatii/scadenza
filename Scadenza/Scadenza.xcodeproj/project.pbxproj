@@ -17,7 +17,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3204A9C02FC5CF6800B89A66 /* Exceptions for "App" folder in "Scadenza" target */ = {
+		32D975CA3024847E0026B42C /* Exceptions for "App" folder in "Scadenza" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -30,7 +30,7 @@
 		32340EB32FC4E46900AAB418 /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				3204A9C02FC5CF6800B89A66 /* Exceptions for "App" folder in "Scadenza" target */,
+				32D975CA3024847E0026B42C /* Exceptions for "App" folder in "Scadenza" target */,
 			);
 			path = App;
 			sourceTree = "<group>";
