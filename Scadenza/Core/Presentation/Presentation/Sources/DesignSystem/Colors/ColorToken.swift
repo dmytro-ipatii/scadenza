@@ -35,4 +35,5 @@ public enum ColorToken {
     public static let warning = Color("warning", bundle: .module)
     public static let danger = Color("danger", bundle: .module)
     public static let info = Color("info", bundle: .module)
+    public static let disabled = Color("disabled", bundle: .module)
 }
