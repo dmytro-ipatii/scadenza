@@ -57,7 +57,6 @@ public extension Text {
             Section("Display") {
                 Text("Ogni scadenza al suo posto")
                     .fontDisplay()
-
             }
 
             Section("Large Title") {
