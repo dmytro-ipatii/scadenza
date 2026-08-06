@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum Space {
+public enum DSSpace {
     public static let xxxs: CGFloat = 4
     public static let xxs: CGFloat = 8
     public static let xs: CGFloat = 12

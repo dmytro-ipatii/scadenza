@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum IconSize {
+public enum DSIconSize {
     public static let sm: CGFloat = 18
     public static let md: CGFloat = 21
     public static let lg: CGFloat = 23

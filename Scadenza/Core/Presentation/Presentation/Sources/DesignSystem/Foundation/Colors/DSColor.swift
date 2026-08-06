@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum ColorToken {
+public enum DSColor {
 
     // MARK: Brand
     public static let accent = Color("accent", bundle: .module)
