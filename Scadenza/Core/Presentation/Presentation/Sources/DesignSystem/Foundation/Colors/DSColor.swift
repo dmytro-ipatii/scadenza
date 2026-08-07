@@ -17,11 +17,13 @@ public enum DSColor {
 
     // MARK: Surface
     public static let surface = Color("surface", bundle: .module)
+    public static let surfaceInverse = Color("surface-inverse", bundle: .module)
     public static let surfaceSecondary = Color("surface-secondary", bundle: .module)
     public static let surfaceElevation = Color("surface-elevation", bundle: .module)
 
     // MARK: Text
     public static let textPrimary = Color("text-primary", bundle: .module)
+    public static let textInverse = Color("text-inverse", bundle: .module)
     public static let textQuaternary = Color("text-quaternary", bundle: .module)
     public static let textSecondary = Color("text-secondary", bundle: .module)
     public static let textTertiary = Color("text-tertiary", bundle: .module)
