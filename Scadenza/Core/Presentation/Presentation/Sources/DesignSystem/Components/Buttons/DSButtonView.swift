@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSButton: View {
+public struct DSButtonView: View {
     private let label: String
     private let icon: ImageResource?
     private let isLoading: Bool
@@ -96,20 +96,20 @@ public struct DSButton: View {
 #Preview("Primary Button") {
     VStack {
 
-        DSButton(
+        DSButtonView(
             label: "Primary Button",
             variant: .primary,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Primary Button",
             icon: .check,
             variant: .primary,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Primary Button",
             icon: .check,
             variant: .primary,
@@ -117,7 +117,7 @@ public struct DSButton: View {
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Primary Button",
             icon: .check,
             variant: .primary,
@@ -130,20 +130,20 @@ public struct DSButton: View {
 #Preview("Secondary Button") {
     VStack {
 
-        DSButton(
+        DSButtonView(
             label: "Secondary Button",
             variant: .secondary,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Secondary Button",
             icon: .check,
             variant: .secondary,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Secondary Button",
             icon: .check,
             variant: .secondary,
@@ -151,7 +151,7 @@ public struct DSButton: View {
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Secondary Button",
             icon: .check,
             variant: .secondary,
@@ -165,20 +165,20 @@ public struct DSButton: View {
 
 #Preview("Accent Button") {
     VStack {
-        DSButton(
+        DSButtonView(
             label: "Accent Button",
             variant: .accent,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Accent Button",
             icon: .check,
             variant: .accent,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Accent Button",
             icon: .check,
             variant: .accent,
@@ -186,7 +186,7 @@ public struct DSButton: View {
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Accent Button",
             icon: .check,
             variant: .accent,
@@ -200,21 +200,21 @@ public struct DSButton: View {
 #Preview("Destructive Button") {
     VStack {
 
-        DSButton(
+        DSButtonView(
             label: "Destructive Button",
             icon: .trash,
             variant: .destructive,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Destructive Button",
             icon: .trash,
             variant: .destructive,
             action: (({ }))
         )
 
-        DSButton(
+        DSButtonView(
             label: "Destructive Button",
             icon: .trash,
             variant: .destructive,
@@ -222,7 +222,7 @@ public struct DSButton: View {
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Destructive Button",
             icon: .trash,
             variant: .destructive,
@@ -237,20 +237,20 @@ public struct DSButton: View {
 #Preview("Text Button") {
     VStack {
 
-        DSButton(
+        DSButtonView(
             label: "Text Button",
             variant: .textual,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Text Button",
             icon: .check,
             variant: .textual,
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Text Button",
             icon: .check,
             variant: .textual,
@@ -258,7 +258,7 @@ public struct DSButton: View {
             action: ({ })
         )
 
-        DSButton(
+        DSButtonView(
             label: "Text Button",
             icon: .check,
             variant: .textual,
