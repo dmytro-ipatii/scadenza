@@ -24,7 +24,7 @@ public struct DSChipAppearance {
 
     static var light: Self {
         Self(
-            foreground: DSColor.surface,
+            foreground: DSColor.surfacePrimary,
             background: .white
         )
     }

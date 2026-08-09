@@ -38,7 +38,7 @@ struct DSFieldView<Content: View>: View {
                 .padding(.horizontal, DSSpace.sm)
                 .background(
                     RoundedRectangle(cornerRadius: DSRadius.md)
-                        .fill(DSColor.surface)
+                        .fill(DSSurfaceColors.field)
                         .background(
                             RoundedRectangle(cornerRadius: DSRadius.md)
                                 .stroke(style: .init(lineWidth: DSBorderWidth.medium))
