@@ -11,7 +11,7 @@ struct DSChipView: View {
     private let label: String
     private let icon: ImageResource
     private let isActive: Bool
-    private let isDisabled: Bool
+    private let isDisabled: IsDisabled
     private let action: () -> Void
 
     private var appearance: DSChipAppearance {
@@ -22,7 +22,7 @@ struct DSChipView: View {
         label: String,
         icon: ImageResource,
         isActive: Bool,
-        isDisabled: Bool = false,
+        isDisabled: IsDisabled = false,
         action: @escaping () -> Void
     ) {
         self.label = label
@@ -60,7 +60,7 @@ struct DSChipView: View {
         )
         .glassEffect(.regular)
         .disabled(isDisabled)
-        .opacity(isDisabled ? 0.5 : 1)
+        .opacity(isDisabled.opacityValue)
 
     }
 }

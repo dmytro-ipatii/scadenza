@@ -11,7 +11,7 @@ public struct DSButtonView: View {
     private let label: String
     private let icon: ImageResource?
     private let isLoading: Bool
-    private let isDisabled: Bool
+    private let isDisabled: IsDisabled
     private let variant: DSButtonVariant
     public let action: () -> Void
 
@@ -28,7 +28,7 @@ public struct DSButtonView: View {
         icon: ImageResource? = nil,
         variant: DSButtonVariant,
         isLoading: Bool = false,
-        isDisabled: Bool = false,
+        isDisabled: IsDisabled = false,
         action: @escaping () -> Void
     ) {
         self.label = label
@@ -60,7 +60,7 @@ public struct DSButtonView: View {
                         .fill(appearance.background)
                 )
                 .foregroundStyle(appearance.foregroud)
-                .opacity(actionIsDisabled ? 0.5 : 1)
+                .opacity((actionIsDisabled as IsDisabled).opacityValue)
             })
         )
         .disabled(actionIsDisabled)
