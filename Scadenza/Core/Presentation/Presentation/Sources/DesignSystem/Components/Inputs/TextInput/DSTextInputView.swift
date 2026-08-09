@@ -12,57 +12,62 @@ struct DSTextInputView: View {
     @Binding var value: String
     var label: String = ""
     var placeholder: String = ""
-    var errorMessage: String?
-    var isDisabled: IsDisabled = false
+    var state: DSFieldState = .idle
+    var onTap: () -> Void = {}
+    var onSubmit: () -> Void = {}
 
     var body: some View {
         DSFieldView(
             label: label,
-            errorMessage: errorMessage,
-            isDisabled: isDisabled,
+            state: state,
+            onTap: onTap,
             content: ({
                 TextField(
                     placeholder,
                     text: $value
                 )
-                .disabled(isDisabled)
+                .onSubmit(onSubmit)
+
             })
         )
     }
 }
 
-private struct DSTextInputStateView: View {
-
-    @State var value: String = ""
-
-    var body: some View {
-
-        VStack(spacing: 20) {
-            DSTextInputView(
-                value: $value,
-                label: "Titolo",
-                placeholder: "Es. Passaporto"
-            )
-
-            DSTextInputView(
-                value: $value,
-                label: "Titolo",
-                placeholder: "Es. Passaporto",
-                isDisabled: true,
-            )
-
-            DSTextInputView(
-                value: $value,
-                label: "Titolo",
-                placeholder: "Es. Passaporto",
-                errorMessage: "Seleziona una data valida"
-            )
-        }
-
-    }
+#Preview("Idle") {
+    DSTextInputView(
+        value: .constant(""),
+        label: "Titolo",
+        placeholder: "Es. Passaporto"
+    )
+    .padding()
 }
 
-#Preview {
-    DSTextInputStateView()
-        .padding()
+#Preview("Focused") {
+    DSTextInputView(
+        value: .constant(""),
+        label: "Titolo",
+        placeholder: "Es. Passaporto",
+        state: .focused
+    )
+    .padding()
+}
+
+#Preview("Disabled") {
+    DSTextInputView(
+        value: .constant(""),
+        label: "Titolo",
+        placeholder: "Es. Passaporto",
+        state: .disabled
+    )
+    .padding()
+}
+
+#Preview("Error") {
+    DSTextInputView(
+        value: .constant(""),
+        label: "Titolo",
+        placeholder: "Es. Passaporto",
+        state: .error(message: "Seleziona una data valida")
+    )
+    .padding()
 }

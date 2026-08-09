@@ -10,19 +10,23 @@ import SwiftUI
 struct DSFieldView<Content: View>: View {
     var content: Content
     var label: String
-    var errorMessage: String?
-    var isDisabled: IsDisabled
+    var state: DSFieldState
+    var onTap: () -> Void
+
+    private var appearance: DSFieldAppearance {
+        .init(from: state)
+    }
 
     public init(
         label: String = "",
-        errorMessage: String? = nil,
-        isDisabled: IsDisabled = false,
+        state: DSFieldState = .idle,
+        onTap: @escaping () -> Void = {},
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.content = content()
         self.label = label
-        self.errorMessage = errorMessage
-        self.isDisabled = isDisabled
+        self.state = state
+        self.onTap = onTap
     }
 
     var body: some View {
@@ -34,23 +38,24 @@ struct DSFieldView<Content: View>: View {
 
             content
                 .frame(maxWidth: .infinity)
-                .frame(height: DSFieldSize.medium)
-                .padding(.horizontal, DSSpace.sm)
+                .frame(height: appearance.height)
+                .padding(.horizontal, appearance.horizontalPaddings)
                 .background(
-                    RoundedRectangle(cornerRadius: DSRadius.md)
-                        .fill(DSSurfaceColors.field)
+                    RoundedRectangle(cornerRadius: appearance.borderRadius)
+                        .fill(appearance.background)
                         .background(
-                            RoundedRectangle(cornerRadius: DSRadius.md)
-                                .stroke(style: .init(lineWidth: DSBorderWidth.medium))
-                                .fill(DSColor.danger)
-                                .opacity(errorMessage != nil ? 1 : 0)
+                            RoundedRectangle(cornerRadius: appearance.borderRadius)
+                                .stroke(style: .init(lineWidth: appearance.borderWidth))
+                                .fill(appearance.borderColor)
+                                .opacity(appearance.borderOpacity)
                         )
-
                 )
-                .opacity(isDisabled.opacityValue)
+                .opacity(appearance.opacity)
+                .disabled(state.isDisabled)
+                .onTapGesture(perform: onTap)
 
-            if let errorMessage {
-                errorMessagewView(message: errorMessage)
+            if case .error(let message) = state {
+                errorMessagewView(message: message)
             }
         }
     }
@@ -94,7 +99,18 @@ struct DSFieldView<Content: View>: View {
 
         DSFieldView(
             label: "Titolo",
-            isDisabled: true,
+            state: .focused,
+            content: ({
+                TextField(
+                    "Es. Passaporto",
+                    text: .constant("")
+                )
+            })
+        )
+
+        DSFieldView(
+            label: "Titolo",
+            state: .disabled,
             content: ({
                 TextField(
                     "Es. Passaporto",
@@ -106,7 +122,7 @@ struct DSFieldView<Content: View>: View {
 
         DSFieldView(
             label: "Titolo",
-            errorMessage: "Inserisci un titolo",
+            state: .error(message: "Inserisci un titolo"),
             content: ({
                 TextField(
                     "Es. Passaporto",
