@@ -12,14 +12,14 @@ public struct DSButtonAppearance {
     let background: Color
     let usesGlassEffect: Bool
     let cornerRadius: CGFloat
-    let hoirizontalPadding: CGFloat
+    let horizontalPadding: CGFloat
     let buttonHeight: CGFloat
     let iconSize: CGSize
 
     public init(from variant: DSButtonVariant) {
         self.usesGlassEffect = variant != .textual
         self.cornerRadius = DSRadius.xl
-        self.hoirizontalPadding = DSSpace.lg
+        self.horizontalPadding = DSSpace.lg
         self.buttonHeight = DSButtonSize.large
         self.iconSize = CGSize(width: DSIconSize.md, height: DSIconSize.md)
         self.foregroud = Self.foreground(for: variant)
@@ -41,7 +41,7 @@ public struct DSButtonAppearance {
         case .primary: DSColor.surfaceInverse
         case .textual: Color.clear
         case .secondary: DSColor.surfaceSecondary
-        case .destructive: DSColor.danger.opacity(0.25)
+        case .destructive: DSColor.dangerTint
         }
     }
 }

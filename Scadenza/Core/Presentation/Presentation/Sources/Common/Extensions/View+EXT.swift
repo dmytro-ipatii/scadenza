@@ -8,7 +8,7 @@
 import SwiftUI
 
 public extension View {
-    func withGlassEfferct(isEnabled: Bool, glass: Glass = .regular) -> some View {
+    func withGlassEffect(isEnabled: Bool, glass: Glass = .regular) -> some View {
         if isEnabled {
             return AnyView(self.glassEffect(glass))
         } else {

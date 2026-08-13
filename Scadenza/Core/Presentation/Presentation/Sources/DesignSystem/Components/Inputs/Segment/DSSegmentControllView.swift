@@ -1,5 +1,5 @@
 //
-//  DSSegmentControllView.swift
+//  DSSegmentControlView.swift
 //  Presentation
 //
 //  Created by Dmytro Ipatii on 07/08/2026.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DSSegmentControllView<Option: DSSegmentItemProtocol>: View {
+struct DSSegmentControlView<Option: DSSegmentItemProtocol>: View {
     let options: [Option]
     @Binding var selection: Option
 
@@ -58,7 +58,7 @@ private struct DSSegmentControllStateView: View {
     @State private var selection: CustomOption = CustomOption.month
 
     var body: some View {
-        DSSegmentControllView(
+        DSSegmentControlView(
             options: options,
             selection: $selection
         )

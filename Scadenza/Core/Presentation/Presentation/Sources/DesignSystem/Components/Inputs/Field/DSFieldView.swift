@@ -11,7 +11,6 @@ struct DSFieldView<Content: View>: View {
     var content: Content
     var label: String
     var state: DSFieldState
-    var onTap: () -> Void
 
     private var appearance: DSFieldAppearance {
         .init(from: state)
@@ -20,13 +19,11 @@ struct DSFieldView<Content: View>: View {
     public init(
         label: String = "",
         state: DSFieldState = .idle,
-        onTap: @escaping () -> Void = {},
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.content = content()
         self.label = label
         self.state = state
-        self.onTap = onTap
     }
 
     var body: some View {
@@ -43,19 +40,22 @@ struct DSFieldView<Content: View>: View {
                 .background(
                     RoundedRectangle(cornerRadius: appearance.borderRadius)
                         .fill(appearance.background)
-                        .background(
-                            RoundedRectangle(cornerRadius: appearance.borderRadius)
-                                .stroke(style: .init(lineWidth: appearance.borderWidth))
-                                .fill(appearance.borderColor)
-                                .opacity(appearance.borderOpacity)
-                        )
                 )
+                .overlay(alignment: .center, content: ({
+                    ZStack {
+                        RoundedRectangle(cornerRadius: appearance.borderRadius)
+                            .stroke(
+                                appearance.borderColor,
+                                style: .init(lineWidth: appearance.borderWidth)
+                            )
+                            .opacity(appearance.borderOpacity)
+                    }
+                }))
                 .opacity(appearance.opacity)
                 .disabled(state.isDisabled)
-                .onTapGesture(perform: onTap)
 
             if case .error(let message) = state {
-                errorMessagewView(message: message)
+                errorMessageView(message: message)
             }
         }
     }
@@ -68,7 +68,7 @@ struct DSFieldView<Content: View>: View {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    @ViewBuilder private func errorMessagewView(message: String) -> some View {
+    @ViewBuilder private func errorMessageView(message: String) -> some View {
         HStack(spacing: DSSpace.xxxs) {
             Image(.exclamation)
                 .resizable()

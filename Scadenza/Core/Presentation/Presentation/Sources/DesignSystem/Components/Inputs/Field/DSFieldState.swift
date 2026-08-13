@@ -7,11 +7,18 @@
 
 import Foundation
 
-public enum DSFieldState {
+public enum DSFieldState: Equatable {
     case idle
     case disabled
     case focused
     case error(message: String)
+
+    public init(isDisabled: Bool, isFocused: Bool, errorMessage: String?) {
+        if isDisabled { self = .disabled }
+        else if let errorMessage { self = .error(message: errorMessage) }
+        else if isFocused { self = .focused}
+        else { self =  .idle }
+    }
 
     var isFocused: Bool {
         if case .focused = self {

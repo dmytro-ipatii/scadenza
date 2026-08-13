@@ -46,15 +46,15 @@ public struct DSButtonView: View {
 
                 ZStack {
 
-                    progressInidcatorView()
+                    progressIndicatorView()
                         .opacity(isLoading ? 1.0 : 0.0)
 
                     content(label: label, icon: icon)
                         .opacity(isLoading ? 0.0 : 1.0)
                 }
-                .frame(height: appearance.buttonHeight)
+                .frame(minHeight: appearance.buttonHeight)
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, appearance.hoirizontalPadding)
+                .padding(.horizontal, appearance.horizontalPadding)
                 .background(
                     RoundedRectangle(cornerRadius: appearance.cornerRadius)
                         .fill(appearance.background)
@@ -64,10 +64,10 @@ public struct DSButtonView: View {
             })
         )
         .disabled(actionIsDisabled)
-        .withGlassEfferct(isEnabled: appearance.usesGlassEffect)
+        .withGlassEffect(isEnabled: appearance.usesGlassEffect)
     }
 
-    @ViewBuilder private func progressInidcatorView() -> some View {
+    @ViewBuilder private func progressIndicatorView() -> some View {
         ProgressView()
             .tint(appearance.foregroud)
     }
