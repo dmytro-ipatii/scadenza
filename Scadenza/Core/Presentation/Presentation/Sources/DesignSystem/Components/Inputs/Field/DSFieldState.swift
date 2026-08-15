@@ -13,11 +13,20 @@ public enum DSFieldState: Equatable {
     case focused
     case error(message: String)
 
-    public init(isDisabled: Bool, isFocused: Bool, errorMessage: String?) {
-        if isDisabled { self = .disabled }
-        else if let errorMessage { self = .error(message: errorMessage) }
-        else if isFocused { self = .focused}
-        else { self =  .idle }
+    public init(
+        isDisabled: Bool = false,
+        isFocused: Bool = false,
+        errorMessage: String? = nil
+    ) {
+        if isDisabled {
+            self = .disabled
+        } else if let errorMessage {
+            self = .error(message: errorMessage)
+        } else if isFocused {
+            self = .focused
+        } else {
+            self =  .idle
+        }
     }
 
     var isFocused: Bool {

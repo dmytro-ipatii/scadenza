@@ -78,6 +78,7 @@ public struct DSFieldInputView<FocusValue: Hashable>: View {
 
                     control
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             })
         )
         .onTapGesture {
@@ -92,12 +93,9 @@ public struct DSFieldInputView<FocusValue: Hashable>: View {
         }
     }
 
-    @ViewBuilder private func iconView(icon: ImageResource) -> some View {
+    private func iconView(icon: ImageResource) -> some View {
         Image(icon)
-            .resizable()
-            .aspectRatio(1, contentMode: .fit)
-            .frame(width: DSIconSize.md)
-            .foregroundStyle(DSColor.textTertiary)
+            .inputIcon()
     }
 
     @ViewBuilder private var control: some View {
@@ -108,7 +106,7 @@ public struct DSFieldInputView<FocusValue: Hashable>: View {
         }
     }
 
-    @ViewBuilder private var field: some View {
+    private var field: some View {
         TextField(
             placeholder,
             text: $value
