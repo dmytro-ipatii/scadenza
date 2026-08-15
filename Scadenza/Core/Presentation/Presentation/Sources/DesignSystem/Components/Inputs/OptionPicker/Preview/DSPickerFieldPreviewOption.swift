@@ -1,5 +1,5 @@
 //
-//  DSPickerFieldPreviewOption.swift
+//  DSOptionPickerFieldPreviewOption.swift
 //  Presentation
 //
 //  Created by Dmytro Ipatii on 15/08/2026.
@@ -8,7 +8,7 @@
 #if DEBUG
 import SwiftUI
 
-public enum DSPickerFieldPreviewOption: String, CaseIterable, DSPickerFieldOptionProtocol {
+public enum DSOptionPickerFieldPreviewOption: String, CaseIterable, DSOptionPickerOptionValueProtocol {
     public var title: String {
         self.rawValue.uppercased()
     }

@@ -6,6 +6,6 @@
 //
 
 
-public protocol DSPickerFieldOptionProtocol: Identifiable, Equatable, Hashable, Sendable {
+public protocol DSOptionPickerOptionValueProtocol: Identifiable, Equatable, Hashable, Sendable {
     var title: String { get }
 }

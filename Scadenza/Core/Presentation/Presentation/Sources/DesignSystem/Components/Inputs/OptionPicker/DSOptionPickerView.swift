@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSPickerFieldView<Option: DSPickerFieldOptionProtocol>: View {
+public struct DSOptionPickerView<Option: DSOptionPickerOptionValueProtocol>: View {
 
     @Binding private var selection: Option?
     private var options: [Option]
@@ -66,7 +66,7 @@ public struct DSPickerFieldView<Option: DSPickerFieldOptionProtocol>: View {
         .sheet(
             isPresented: $isOptionsListPresented,
             content: ({
-                DSPickerListView(
+                DSOptionPickerListView(
                     selection: $selection,
                     title: label,
                     options: options
@@ -109,11 +109,11 @@ private let previewIcon: ImageResource = .umbrella
 
 private struct DSPickerFieldViewWithStatePreview: View {
 
-    @State var selection: DSPickerFieldPreviewOption?
-    private let options: [DSPickerFieldPreviewOption] = DSPickerFieldPreviewOption.allCases
+    @State var selection: DSOptionPickerFieldPreviewOption?
+    private let options: [DSOptionPickerFieldPreviewOption] = DSOptionPickerFieldPreviewOption.allCases
 
     var body: some View {
-        DSPickerFieldView(
+        DSOptionPickerView(
             selection: $selection,
             options: options,
             label: previewLabel,
@@ -130,9 +130,9 @@ private struct DSPickerFieldViewWithStatePreview: View {
 }
 
 #Preview("Errors") {
-    DSPickerFieldView(
+    DSOptionPickerView(
         selection: .constant(nil),
-        options: DSPickerFieldPreviewOption.allCases,
+        options: DSOptionPickerFieldPreviewOption.allCases,
         label: previewLabel,
         placeholder: previewPlaceholder,
         icon: previewIcon,
@@ -141,9 +141,9 @@ private struct DSPickerFieldViewWithStatePreview: View {
 }
 
 #Preview("Disabled") {
-    DSPickerFieldView(
+    DSOptionPickerView(
         selection: .constant(nil),
-        options: DSPickerFieldPreviewOption.allCases,
+        options: DSOptionPickerFieldPreviewOption.allCases,
         label: previewLabel,
         placeholder: previewPlaceholder,
         icon: previewIcon,
@@ -154,8 +154,8 @@ private struct DSPickerFieldViewWithStatePreview: View {
 }
 
 #Preview("Empty List") {
-    DSPickerFieldView(
-        selection: .constant(nil as DSPickerFieldPreviewOption?),
+    DSOptionPickerView(
+        selection: .constant(nil as DSOptionPickerFieldPreviewOption?),
         options: [],
         label: previewLabel,
         placeholder: previewPlaceholder,

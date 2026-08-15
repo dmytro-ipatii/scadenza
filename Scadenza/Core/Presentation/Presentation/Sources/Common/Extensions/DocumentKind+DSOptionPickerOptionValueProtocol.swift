@@ -1,5 +1,5 @@
 //
-//  DocumentKind+DSPickerFieldOptionProtocol.swift
+//  DocumentKind+DSOptionPickerOptionValueProtocol.swift
 //  Presentation
 //
 //  Created by Dmytro Ipatii on 15/08/2026.
@@ -8,7 +8,7 @@
 import Entity
 
 extension DocumentKind: @retroactive Identifiable {}
-extension DocumentKind: DSPickerFieldOptionProtocol {
+extension DocumentKind: DSOptionPickerOptionValueProtocol {
 
     public var title: String {
         self.localizedString

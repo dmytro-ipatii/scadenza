@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSPickerListRowAppearance: Sendable {
+public struct DSOptionPickerListRowAppearance: Sendable {
     let icon: DSOptionIconConfigs?
     let foreground: Color
     let fontWeight: Font.Weight
@@ -22,8 +22,8 @@ public struct DSPickerListRowAppearance: Sendable {
         self.fontWeight = fontWeight
     }
 
-    public static let plain: DSPickerListRowAppearance = .init()
-    public static let selected: DSPickerListRowAppearance = .init(
+    public static let plain: DSOptionPickerListRowAppearance = .init()
+    public static let selected: DSOptionPickerListRowAppearance = .init(
         icon: .init(icon: .check, color: DSColor.success),
         foreground: DSColor.textPrimary,
         fontWeight: .semibold

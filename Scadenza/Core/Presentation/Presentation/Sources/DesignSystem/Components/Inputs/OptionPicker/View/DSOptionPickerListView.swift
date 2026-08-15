@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSPickerListView<Option: DSPickerFieldOptionProtocol>: View {
+public struct DSOptionPickerListView<Option: DSOptionPickerOptionValueProtocol>: View {
 
     @Environment(\.dismiss) private var dismiss
 
@@ -80,7 +80,7 @@ public struct DSPickerListView<Option: DSPickerFieldOptionProtocol>: View {
     }
 
     private func optionRowView(_ option: Option) -> AnyView {
-        let appearance: DSPickerListRowAppearance = isSelected(option) ? .selected : .plain
+        let appearance: DSOptionPickerListRowAppearance = isSelected(option) ? .selected : .plain
 
         return AnyView(
             DSOptionRowView(
@@ -97,19 +97,19 @@ public struct DSPickerListView<Option: DSPickerFieldOptionProtocol>: View {
 }
 
 #Preview("Plain") {
-    DSPickerListView(
+    DSOptionPickerListView(
         selection: .constant(nil),
         title: "Title",
-        options: DSPickerFieldPreviewOption.allCases
+        options: DSOptionPickerFieldPreviewOption.allCases
     )
     .padding()
 }
 
 #Preview("Selected") {
-    DSPickerListView(
-        selection: .constant(DSPickerFieldPreviewOption.optionOne),
+    DSOptionPickerListView(
+        selection: .constant(DSOptionPickerFieldPreviewOption.optionOne),
         title: "Title",
-        options: DSPickerFieldPreviewOption.allCases
+        options: DSOptionPickerFieldPreviewOption.allCases
     )
     .padding()
 }
