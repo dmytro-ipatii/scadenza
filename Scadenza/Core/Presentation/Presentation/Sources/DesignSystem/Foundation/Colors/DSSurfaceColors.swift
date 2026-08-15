@@ -8,6 +8,6 @@
 import SwiftUI
 
 public enum DSSurfaceColors {
-    public static let field: Color = DSColor.surfacePrimary
+    public static let field: Color = DSColor.field
     public static let paper: Color = DSColor.surfaceSecondary
 }

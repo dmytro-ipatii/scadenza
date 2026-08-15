@@ -5,6 +5,7 @@
 //  Created by Dmytro Ipatii on 03/08/2026.
 //
 
+import Entity
 import Foundation
 
 public extension CurrencyCodeOption {

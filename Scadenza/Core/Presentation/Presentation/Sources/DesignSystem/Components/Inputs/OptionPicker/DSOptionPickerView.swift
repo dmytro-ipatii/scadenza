@@ -41,27 +41,12 @@ public struct DSOptionPickerView<Option: DSOptionPickerOptionValueProtocol>: Vie
     private var fieldState: DSFieldState { .init(isDisabled: isDisabled, errorMessage: errorMessage)}
 
     public var body: some View {
-
-        DSFieldView(
+        DSPickerContentView(
+            value: selection?.title ?? placeholder,
             label: label,
-            state: fieldState,
-            content: ({
-                HStack {
-
-                    if let icon {
-                        trailingIconView(icon)
-                    }
-
-                    contentView(selection?.title ?? placeholder)
-
-                    Spacer()
-
-                    chevronIconView
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .contentShape(.rect)
-                .onTapGesture(perform: showOptionsList)
-            })
+            icon: icon,
+            fieldState: fieldState,
+            onPress: showOptionsList
         )
         .sheet(
             isPresented: $isOptionsListPresented,
@@ -80,24 +65,6 @@ public struct DSOptionPickerView<Option: DSOptionPickerOptionValueProtocol>: Vie
 
     private func showOptionsList() {
         isOptionsListPresented = true
-    }
-
-    private func trailingIconView(_ icon: ImageResource) -> some View {
-        Image(icon)
-            .inputIcon()
-    }
-
-    private func contentView(_ text: String) -> some View {
-        Text(text)
-            .fontBody()
-            .fontWeight(.medium)
-            .foregroundStyle(DSColor.textPrimary)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var chevronIconView: some View {
-        Image(.chevronDown)
-            .inputIcon()
     }
 }
 

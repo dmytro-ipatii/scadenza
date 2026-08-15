@@ -60,7 +60,7 @@ struct DSFieldView<Content: View>: View {
         }
     }
 
-    @ViewBuilder private func labelView(label: String) -> some View {
+    private func labelView(label: String) -> some View {
         Text(label)
             .fontCaption()
             .fontWeight(.semibold)
@@ -68,7 +68,7 @@ struct DSFieldView<Content: View>: View {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    @ViewBuilder private func errorMessageView(message: String) -> some View {
+    private func errorMessageView(message: String) -> some View {
         HStack(spacing: DSSpace.xxxs) {
             Image(.exclamation)
                 .resizable()

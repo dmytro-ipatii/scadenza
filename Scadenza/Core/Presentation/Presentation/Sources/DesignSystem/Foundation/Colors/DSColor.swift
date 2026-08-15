@@ -22,6 +22,7 @@ public enum DSColor {
     public static let surfaceInverse = Color("surface-inverse", bundle: .module)
     public static let surfaceSecondary = Color("surface-secondary", bundle: .module)
     public static let surfaceElevation = Color("surface-elevation", bundle: .module)
+    public static let field = Color("field", bundle: .module)
 
     // MARK: Text
     public static let textPrimary = Color("text-primary", bundle: .module)
