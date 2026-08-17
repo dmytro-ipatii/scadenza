@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DSChipView: View {
     private let label: String
+    private let count: String?
     private let icon: ImageResource
     private let isActive: Bool
     private let isDisabled: IsDisabled
@@ -20,12 +21,14 @@ struct DSChipView: View {
 
     public init(
         label: String,
+        count: String? = nil,
         icon: ImageResource,
         isActive: Bool,
         isDisabled: IsDisabled = false,
         action: @escaping () -> Void
     ) {
         self.label = label
+        self.count = count
         self.icon = icon
         self.isActive = isActive
         self.isDisabled = isDisabled
@@ -38,9 +41,17 @@ struct DSChipView: View {
             label: ({
                 Label(
                     title: {
-                        Text(label)
-                            .fontSecondary()
-                            .fontWeight(.semibold)
+                        HStack {
+                            Text(label)
+                                .fontSecondary()
+                                .fontWeight(.semibold)
+
+                            if let count {
+                                Text(count)
+                                    .fontSecondary()
+                                    .fontWeight(.semibold)
+                            }
+                        }
                     },
                     icon: {
                         Image(icon)
@@ -65,8 +76,15 @@ struct DSChipView: View {
     }
 }
 
-
 #Preview("Inactive") {
+    DSChipView(
+        label: "Expiring",
+        count: "6",
+        icon: .clock,
+        isActive: false,
+        action: ({})
+    )
+
     DSChipView(
         label: "Expiring",
         icon: .clock,
@@ -84,6 +102,14 @@ struct DSChipView: View {
 }
 
 #Preview("Active") {
+    DSChipView(
+        label: "Expiring",
+        count: "6",
+        icon: .clock,
+        isActive: true,
+        action: ({})
+    )
+
     DSChipView(
         label: "Expiring",
         icon: .clock,
