@@ -40,7 +40,9 @@ public enum DSColor {
 
     // MARK: Status
     public static let success = Color("success", bundle: .module)
+    public static let successTit = Color("success-tint", bundle: .module)
     public static let warning = Color("warning", bundle: .module)
+    public static let warningTit = Color("warning-tint", bundle: .module)
     public static let danger = Color("danger", bundle: .module)
     public static let dangerTint = Color("danger-tint", bundle: .module)
     public static let disabled = Color("disabled", bundle: .module)
