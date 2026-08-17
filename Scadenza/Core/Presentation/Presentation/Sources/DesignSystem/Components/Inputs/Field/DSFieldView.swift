@@ -69,19 +69,10 @@ struct DSFieldView<Content: View>: View {
     }
 
     private func errorMessageView(message: String) -> some View {
-        HStack(spacing: DSSpace.xxxs) {
-            Image(.exclamation)
-                .resizable()
-                .aspectRatio(1, contentMode: .fit)
-                .frame(width: DSIconSize.xs)
-
-            Text(message)
-                .fontCaption()
-                .fontWeight(.semibold)
-
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .foregroundStyle(DSColor.danger)
+        DSFieldMessageView(
+            message: message,
+            variant: .error
+        )
     }
 }
 
