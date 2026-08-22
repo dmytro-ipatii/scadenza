@@ -23,13 +23,14 @@ public struct DSIconBadgeView: View {
 
             RoundedRectangle(cornerRadius: DSRadius.md)
                 .fill(appearance.background)
-                .frame(width: 56, height: 56)
 
             Image(appearance.icon)
                 .squareAspectRation()
                 .frame(width: DSIconSize.xl)
                 .foregroundStyle(appearance.iconColor)
         }
+        .aspectRatio(1, contentMode: .fit)
+
     }
 }
 
@@ -38,22 +39,27 @@ public struct DSIconBadgeView: View {
         DSIconBadgeView(
             variant: .succes
         )
+        .frame(width: 56, height: 56)
 
         DSIconBadgeView(
             variant: .warning
         )
+        .frame(width: 56, height: 56)
 
         DSIconBadgeView(
             variant: .danger
         )
+        .frame(width: 56, height: 56)
 
         DSIconBadgeView(
             variant: .neutral(icon: .folder)
         )
+        .frame(width: 56, height: 56)
 
         DSIconBadgeView(
             variant: .solid(icon: .faceid)
         )
+        .frame(width: 56, height: 56)
 
         DSIconBadgeView(
             variant: .other(
@@ -62,6 +68,7 @@ public struct DSIconBadgeView: View {
                 )
             )
         )
+        .frame(width: 56, height: 56)
 
     }
     .padding()

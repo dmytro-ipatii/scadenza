@@ -78,7 +78,7 @@ public struct DSSourceCardView: View {
                 )
             )
         )
-        .frame(width: 48, height: 48)
+        .frame(width: 48)
     }
 
     private func labelView(_ label: String) -> some View {
