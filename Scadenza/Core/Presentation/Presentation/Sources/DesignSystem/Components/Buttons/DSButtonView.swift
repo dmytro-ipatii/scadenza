@@ -68,8 +68,7 @@ public struct DSButtonView: View {
     }
 
     @ViewBuilder private func progressIndicatorView() -> some View {
-        ProgressView()
-            .tint(appearance.foregroud)
+        DSSpinnerView(color: appearance.foregroud)
     }
 
     @ViewBuilder private func content(label: String, icon: ImageResource?) -> some View {
@@ -91,7 +90,6 @@ public struct DSButtonView: View {
     }
 
 }
-
 
 #Preview("Primary Button") {
     VStack {
