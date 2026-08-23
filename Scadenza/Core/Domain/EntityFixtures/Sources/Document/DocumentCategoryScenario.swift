@@ -10,20 +10,128 @@ import Entity
 
 public enum DocumentCategoryScenario {
 
-    /// Many docs spread across kinds and dates — list/scroll performance.
-    public static func many() -> [DocumentCategory] {
-        let documents = DocumentScenario.many()
+    // MARK: - Empty
 
-        return DocumentKind.allCases.map { docKind in
-            return DocumentCategory.fixture(
-                kind: docKind,
-                documents: documents.filter { $0.kind == docKind }
+    public static let empty: [DocumentCategory] = []
+
+    // MARK: - Single Category
+
+    public static let utilityBills: [DocumentCategory] = [
+        .fixture(
+            kind: .utilityBill,
+            documents: [
+                DocumentScenario.overdueUtilityBill,
+                DocumentScenario.dueThisWeek,
+                DocumentScenario.completeUtilityBill
+            ]
+        )
+    ]
+
+    public static let contracts: [DocumentCategory] = [
+        .fixture(
+            kind: .contract,
+            documents: [
+                DocumentScenario.multiDateContract
+            ]
+        )
+    ]
+
+    // MARK: - Mixed Categories
+
+    public static let inbox: [DocumentCategory] = [
+        .fixture(
+            kind: .utilityBill,
+            documents: [
+                DocumentScenario.overdueUtilityBill,
+                DocumentScenario.completeUtilityBill
+            ]
+        ),
+        .fixture(
+            kind: .taxNotice,
+            documents: [
+                DocumentScenario.dueThisWeek,
+                DocumentScenario.completeTaxNotice
+            ]
+        ),
+        .fixture(
+            kind: .insurancePolicy,
+            documents: [
+                DocumentScenario.renewal40DaysOut,
+                DocumentScenario.completeInsurancePolicy
+            ]
+        ),
+        .fixture(
+            kind: .contract,
+            documents: [
+                DocumentScenario.multiDateContract
+            ]
+        ),
+        .fixture(
+            kind: .warranty,
+            documents: [
+                DocumentScenario.expiringNextWeek
+            ]
+        )
+    ]
+
+    // MARK: - Performance
+
+    /// Large data set spread across every category.
+    public static func many(_ count: Int = 100) -> [DocumentCategory] {
+        let documents = DocumentScenario.many(count)
+
+        let grouped = Dictionary(grouping: documents, by: \.kind)
+
+        return DocumentKind.allCases.map { kind in
+            .fixture(
+                kind: kind,
+                documents: grouped[kind] ?? []
             )
         }
     }
 
-    public static var complete: [DocumentCategory] {
-        Self.many().filter { !$0.documents.isEmpty }
-    }
+    // MARK: - Complete Documents
 
+    public static let complete: [DocumentCategory] = [
+        .fixture(
+            kind: .utilityBill,
+            documents: [
+                DocumentScenario.completeUtilityBill
+            ]
+        ),
+        .fixture(
+            kind: .taxNotice,
+            documents: [
+                DocumentScenario.completeTaxNotice
+            ]
+        ),
+        .fixture(
+            kind: .insurancePolicy,
+            documents: [
+                DocumentScenario.completeInsurancePolicy
+            ]
+        )
+    ]
+
+    // MARK: - Edge Cases
+
+    /// Every category exists but some are empty.
+    public static let allCategories: [DocumentCategory] =
+        DocumentKind.allCases.map { kind in
+            .fixture(
+                kind: kind,
+                documents: DocumentScenario.inbox.filter { $0.kind == kind }
+            )
+        }
+
+    /// One document in every category.
+    public static let onePerCategory: [DocumentCategory] =
+        DocumentKind.allCases.map { kind in
+            .fixture(
+                kind: kind,
+                documents: [
+                    Document.fixture(kind: kind)
+                ]
+            )
+        }
 }
