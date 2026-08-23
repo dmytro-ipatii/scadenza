@@ -16,6 +16,8 @@ public struct InboxView: View {
         self._viewModel = State(wrappedValue: viewModel)
     }
 
+    @State var selection: Date?
+
     public var body: some View {
 
         ZStack {

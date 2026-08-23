@@ -10,11 +10,16 @@ import DI
 
 @main
 struct MainApp: App {
-    private let container = AppContainer()
+    private let container: AppContainer
+
+    init() {
+        self.container = AppContainer()
+    }
 
     var body: some Scene {
         WindowGroup {
             MainAppView(container: container)
+                .environment(container.modalManager)
         }
     }
 }
