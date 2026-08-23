@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct DSAlertModifier: ViewModifier {
 
-    @Bindable var manager: DSModalManager
+    @Bindable var manager: ModalManager
 
     public func body(content: Content) -> some View {
         ZStack {

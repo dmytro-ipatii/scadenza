@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSModalButton: Sendable, Identifiable {
+public struct ModalButton: Sendable, Identifiable {
     let label: String
     let variant: DSButtonVariant
     let action: @MainActor () -> Void
@@ -17,7 +17,7 @@ public struct DSModalButton: Sendable, Identifiable {
     }
 }
 
-public struct DSModalContent: Sendable, Equatable {
+public struct ModalContent: Sendable, Equatable {
 
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.title != rhs.title
@@ -30,14 +30,14 @@ public struct DSModalContent: Sendable, Equatable {
     let title: String
     let variant: DSModalVariant
     let message: String?
-    let buttons: [DSModalButton]
+    let buttons: [ModalButton]
 
     init(
         icon: ImageResource? = nil,
         title: String,
         variant: DSModalVariant,
         message: String? = nil,
-        buttons: [DSModalButton] = []
+        buttons: [ModalButton] = []
     ) {
         self.icon = icon
         self.title = title

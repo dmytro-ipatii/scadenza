@@ -16,10 +16,10 @@ import DataSourceMocks
 
 @MainActor
 public final class AppContainer {
-    public let modalManager: DSModalManager
+    public let modalManager: ModalManager
 
     public init() {
-        modalManager = DSModalManager()
+        modalManager = ModalManager()
     }
 
     public func createInoxView() -> some View {

@@ -8,10 +8,10 @@
 import SwiftUI
 
 public struct DSAlertContentView: View {
-    private let content: DSModalContent
+    private let content: ModalContent
 
     public init(
-        content: DSModalContent
+        content: ModalContent
     ) {
         self.content = content
     }
@@ -82,9 +82,9 @@ public struct DSAlertContentView: View {
                 variant: .danger,
                 message: "«RC Auto · Fiat Panda» and its attachment will be removed from this iPhone.",
                 buttons: [
-                    DSModalButton(label: "Delete", variant: .destructive, action: ({})),
+                    ModalButton(label: "Delete", variant: .destructive, action: ({})),
 
-                    DSModalButton(label: "Cancel", variant: .textual, action: ({})),
+                    ModalButton(label: "Cancel", variant: .textual, action: ({})),
                 ]
             )
         )
@@ -100,7 +100,7 @@ public struct DSAlertContentView: View {
                 variant: .warning,
                 message: "The document will expire soon, and require your attention.",
                 buttons: [
-                    DSModalButton(label: "OK", variant: .primary, action: ({}))
+                    ModalButton(label: "OK", variant: .primary, action: ({}))
                 ]
             )
         )
@@ -115,7 +115,7 @@ public struct DSAlertContentView: View {
                 variant: .neutral,
                 message: "The document will expire soon, and require your attention.",
                 buttons: [
-                    DSModalButton(label: "OK", variant: .primary, action: ({}))
+                    ModalButton(label: "OK", variant: .primary, action: ({}))
                 ]
             )
         )

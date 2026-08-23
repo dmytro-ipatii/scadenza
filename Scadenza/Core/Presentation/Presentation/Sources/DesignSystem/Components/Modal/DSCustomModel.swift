@@ -10,7 +10,7 @@ import SwiftUI
 extension View {
 
     @ViewBuilder
-    func showCustomModal(type: DSCustomModalType = .alert, with manager: DSModalManager) -> some View {
+    func showCustomModal(type: DSCustomModalType = .alert, with manager: ModalManager) -> some View {
 
         switch type {
         case .alert:
@@ -53,23 +53,23 @@ extension View {
 
 private struct CustomAlertStateView: View {
 
-    @State var alertManager: DSModalManager = DSModalManager()
+    @State var alertManager: ModalManager = ModalManager()
     @State var modalType: DSCustomModalType = .alert
 
-    private func getModalContent() -> DSModalContent {
+    private func getModalContent() -> ModalContent {
         .init(
             icon: .trash,
             title: "Delete document?",
             variant: .danger,
             message: "«RC Auto · Fiat Panda» and its attachment will be removed from this iPhone.",
             buttons: [
-                DSModalButton(
+                ModalButton(
                     label: "Delete",
                     variant: .destructive,
                     action: self.alertManager.dismiss
                 ),
 
-                DSModalButton(
+                ModalButton(
                     label: "Cancel",
                     variant: .textual,
                     action: self.alertManager.dismiss

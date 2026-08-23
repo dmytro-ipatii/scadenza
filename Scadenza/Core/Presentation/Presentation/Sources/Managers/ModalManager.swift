@@ -9,13 +9,13 @@ import SwiftUI
 
 @MainActor
 @Observable
-public class DSModalManager {
-    var content: DSModalContent?
+public class ModalManager {
+    var content: ModalContent?
 
     public init() {
     }
 
-    func present(content: DSModalContent?) {
+    func present(content: ModalContent?) {
         self.content = content
     }
 
