@@ -47,7 +47,7 @@ public struct DSIconBadgeView: View {
         .frame(width: 56, height: 56)
 
         DSIconBadgeView(
-            variant: .danger
+            variant: .danger(icon: .exclamation)
         )
         .frame(width: 56, height: 56)
 

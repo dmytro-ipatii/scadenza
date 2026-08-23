@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-public enum DSIconBadgeVariant {
+public enum DSIconBadgeVariant: Sendable {
     case succes
     case warning
-    case danger
+    case danger(icon: ImageResource)
     case neutral(icon: ImageResource)
     case solid(icon: ImageResource)
     case other(appearance: DSIconBadgeAppearance)
@@ -29,9 +29,9 @@ public enum DSIconBadgeVariant {
                 iconColor: DSColor.warning,
                 background: DSColor.warningTit
             )
-        case .danger:
+        case .danger(icon: let icon):
             DSIconBadgeAppearance(
-                icon: .exclamation,
+                icon: icon,
                 iconColor: DSColor.danger,
                 background: DSColor.dangerTint
             )
