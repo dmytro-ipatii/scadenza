@@ -16,9 +16,10 @@ import DataSourceMocks
 
 @MainActor
 public final class AppContainer {
+    public let modalManager: ModalManager
 
     public init() {
-
+        modalManager = ModalManager()
     }
 
     public func createHomeScreen() -> some View {
