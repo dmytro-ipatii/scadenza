@@ -15,7 +15,7 @@ public struct DSIconBadgeAppearance: Sendable {
     public init(
         icon: ImageResource,
         iconColor: Color = DSColor.textTertiary,
-        background: Color = DSColor.surfacePrimary
+        background: Color = DSColor.surfaceSecondary
     ) {
         self.icon = icon
         self.iconColor = iconColor
