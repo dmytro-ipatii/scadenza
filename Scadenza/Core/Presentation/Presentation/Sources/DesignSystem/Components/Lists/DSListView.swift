@@ -35,8 +35,7 @@ public struct DSListView<Item: Hashable>: View {
                 .onTapGesture(perform: ({ onItemPress(item) }))
         }
         .listStyle(.plain)
-        .background(DSColor.surfaceSecondary)
-        .clipShape(RoundedRectangle(cornerRadius: DSRadius.xl))
+        .dsListBackgroud()
 
     }
 }

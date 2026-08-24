@@ -9,6 +9,7 @@ import SwiftUI
 
 public enum DSRadius {
     public static let none: CGFloat = 0
+    public static let xs: CGFloat = 12
     public static let sm: CGFloat = 14
     public static let md: CGFloat = 18
     public static let lg: CGFloat = 24
