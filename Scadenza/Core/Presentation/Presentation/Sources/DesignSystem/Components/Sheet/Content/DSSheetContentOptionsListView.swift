@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  DSSheetContentOptionsListView.swift
 //  Presentation
 //
 //  Created by Dmytro Ipatii on 15/08/2026.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSOptionPickerListView<Option: DSOptionPickerOptionValueProtocol>: View {
+public struct DSSheetContentOptionsListView<Option: DSOptionPickerValueProtocol>: View {
 
     @Environment(\.dismiss) private var dismiss
 
@@ -27,22 +27,31 @@ public struct DSOptionPickerListView<Option: DSOptionPickerOptionValueProtocol>:
         self.options = options
     }
 
+    public init(
+        selection: Binding<Option>,
+        title: String? = nil,
+        options: [Option]
+    ) {
+        self._selection = Binding(asOptional: selection)
+
+        self.title = title
+        self.options = options
+    }
+
     public var body: some View {
-        VStack(spacing: DSSpace.md) {
-            if let title {
-                titleView(title)
-            }
-
-            DSListView(
-                selection: $localSelection,
-                items: options,
-                onItemPress: selectOption,
-                listItem: optionRowView
-            )
-
-            applyButtonView
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        DSSheetContentWithActionButtonView(
+            title: title,
+            detennts: [.medium, .large],
+            action: applySelection,
+            content: ({
+                DSListView(
+                    selection: $localSelection,
+                    items: options,
+                    onItemPress: selectOption,
+                    listItem: optionRowView
+                )
+            })
+        )
         .onAppear(perform: initializeSelection)
     }
 
@@ -64,21 +73,6 @@ public struct DSOptionPickerListView<Option: DSOptionPickerOptionValueProtocol>:
         dismiss()
     }
 
-    private func titleView(_ title: String) -> some View {
-        Text(title)
-            .foregroundStyle(DSColor.textPrimary)
-            .fontTitle()
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var applyButtonView: some View {
-        DSButtonView(
-            label: "Apply",
-            variant: .primary,
-            action: (applySelection)
-        )
-    }
-
     private func optionRowView(_ option: Option) -> AnyView {
         let appearance: DSOptionPickerListRowAppearance = isSelected(option) ? .selected : .plain
 
@@ -97,7 +91,7 @@ public struct DSOptionPickerListView<Option: DSOptionPickerOptionValueProtocol>:
 }
 
 #Preview("Plain") {
-    DSOptionPickerListView(
+    DSSheetContentOptionsListView(
         selection: .constant(nil),
         title: "Title",
         options: DSOptionPickerFieldPreviewOption.allCases
@@ -106,7 +100,7 @@ public struct DSOptionPickerListView<Option: DSOptionPickerOptionValueProtocol>:
 }
 
 #Preview("Selected") {
-    DSOptionPickerListView(
+    DSSheetContentOptionsListView(
         selection: .constant(DSOptionPickerFieldPreviewOption.optionOne),
         title: "Title",
         options: DSOptionPickerFieldPreviewOption.allCases

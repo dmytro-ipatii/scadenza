@@ -25,4 +25,8 @@ public final class AppContainer {
     public func createHomeScreen() -> some View {
         return HomeScreenView()
     }
+
+    public func createSettingsScreen() -> some View {
+        return SettingsScreenView()
+    }
 }

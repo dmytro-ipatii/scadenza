@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSOptionPickerView<Option: DSOptionPickerOptionValueProtocol>: View {
+public struct DSOptionPickerView<Option: DSOptionPickerValueProtocol>: View {
 
     @Binding private var selection: Option?
     private var options: [Option]
@@ -48,18 +48,11 @@ public struct DSOptionPickerView<Option: DSOptionPickerOptionValueProtocol>: Vie
             fieldState: fieldState,
             onPress: showOptionsList
         )
-        .sheet(
+        .dsOptionPickertSheet(
+            label: label,
             isPresented: $isOptionsListPresented,
-            content: ({
-                DSOptionPickerListView(
-                    selection: $selection,
-                    title: label,
-                    options: options
-                )
-                .padding(.top, DSSpace.lg)
-                .padding(.horizontal, DSSpace.lg)
-                .presentationDetents([.medium, .large])
-            })
+            selection: $selection,
+            options: options
         )
     }
 

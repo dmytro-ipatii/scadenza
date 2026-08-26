@@ -8,7 +8,7 @@
 #if DEBUG
 import SwiftUI
 
-public enum DSOptionPickerFieldPreviewOption: String, CaseIterable, DSOptionPickerOptionValueProtocol {
+public enum DSOptionPickerFieldPreviewOption: String, CaseIterable, DSOptionPickerValueProtocol {
     public var title: String {
         self.rawValue.uppercased()
     }

@@ -12,8 +12,7 @@ struct MainAppView: View {
     let container: AppContainer
 
     var body: some View {
-        container.createHomeScreen()
-        .padding()
+        container.createSettingsScreen()
     }
 }
 

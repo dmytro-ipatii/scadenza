@@ -21,3 +21,19 @@ public extension Binding where Value == Bool {
             })
     }
 }
+
+public extension Binding {
+
+    init<T: Sendable>(asOptional value: Binding<T>) where Value == T?{
+        self.init(
+            get: {
+                value.wrappedValue
+            },
+            set: { newValue in
+
+                guard let newValue else { return }
+
+                value.wrappedValue = newValue
+            })
+    }
+}

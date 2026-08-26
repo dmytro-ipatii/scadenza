@@ -13,7 +13,7 @@ public struct DSListRowWithActionView<TrailingContent: View>: View {
     private let title: String
     private let subtitle: String?
 
-    private let trialingConent: TrailingContent?
+    private let trailingContent: TrailingContent?
 
     private var action: () -> Void
 
@@ -29,32 +29,29 @@ public struct DSListRowWithActionView<TrailingContent: View>: View {
 
         self.icon = icon
 
-        self.trialingConent = trialingConent()
+        self.trailingContent = trialingConent()
 
         self.action = action
     }
 
     public var body: some View {
-        Button(
-            action: action,
-            label: ({
-                HStack(alignment: .center) {
+        HStack(alignment: .center) {
 
-                    if let icon {
-                        iconView(icon)
-                    }
+            if let icon {
+                iconView(icon)
+            }
 
-                    titleWithSubtitleView
+            titleWithSubtitleView
 
-                    Spacer()
+            Spacer()
 
-                    trialingConent
-                }
-                .padding(.vertical, DSSpace.xs)
-                .padding(.horizontal, DSSpace.sm)
-                .frame(minHeight: DSButtonSize.large)
-        }))
-        .buttonStyle(.plain)
+            trailingContent
+        }
+        .padding(.vertical, DSSpace.xs)
+        .padding(.horizontal, DSSpace.sm)
+        .frame(minHeight: DSButtonSize.large)
+        .contentShape(Rectangle())
+        .onTapGesture(perform: action)
     }
 
     private func iconView(_ icon: ImageResource) -> some View {

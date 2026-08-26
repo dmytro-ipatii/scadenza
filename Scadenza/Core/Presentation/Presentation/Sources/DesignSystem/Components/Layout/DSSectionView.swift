@@ -9,11 +9,11 @@ import SwiftUI
 
 public struct DSSectionView<Content: View>: View {
 
-    private let title: String
+    private let title: String?
     private let content: Content
 
     public init(
-        title: String,
+        title: String? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.title = title
@@ -27,11 +27,13 @@ public struct DSSectionView<Content: View>: View {
                     .frame(maxWidth: .infinity)
             },
             header: {
-                Text(title.uppercased())
-                    .fontCaption()
-                    .fontWeight(.bold)
-                    .foregroundStyle(DSColor.textTertiary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                if let title {
+                    Text(title.uppercased())
+                        .fontCaption()
+                        .fontWeight(.bold)
+                        .foregroundStyle(DSColor.textTertiary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             })
     }
 }
