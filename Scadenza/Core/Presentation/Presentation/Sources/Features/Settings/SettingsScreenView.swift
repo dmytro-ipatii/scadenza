@@ -7,10 +7,47 @@
 
 import SwiftUI
 
-public enum Language: Sendable, CaseIterable {
+// TODO: Move this models to the entity layer
+public enum AppColorScheme: Sendable {
+    case light
+    case dark
+
+    static var `default`: Self {
+        // TODO: Set default value from the user device's colot scheme
+        .dark
+    }
+}
+
+extension AppColorScheme: CaseIterable, DSOptionPickerValueProtocol {
+    public var id: Self {
+        self
+    }
+
+    public var title: String {
+        switch self {
+        case .light:
+            "Light"
+        case .dark:
+            "Dark"
+        }
+    }
+
+    var colorScheme: ColorScheme {
+        switch self {
+        case .light:
+                .light
+        case .dark:
+                .dark
+        }
+    }
+}
+
+public enum AppLanguage: Sendable {
     case english
     case italian
+}
 
+extension AppLanguage: DSOptionPickerValueProtocol, CaseIterable{
     var endonym: String {
         switch self {
         case .english:
@@ -19,9 +56,7 @@ public enum Language: Sendable, CaseIterable {
             "Italiano"
         }
     }
-}
 
-extension Language: DSOptionPickerValueProtocol {
     public var title: String {
         self.endonym
     }
@@ -33,11 +68,11 @@ extension Language: DSOptionPickerValueProtocol {
 
 public struct SettingsScreenView: View {
 
-    @State private var isSelectLanguagePresented: Bool = false
-    @State private var isSelectAppearancePresented: Bool = false
+    @State private var selectedColorScheme: AppColorScheme = AppColorScheme.default
+    private let colorSchemeOptions: [AppColorScheme] = AppColorScheme.allCases
 
-    @State var selectedLanguage: Language = .italian
-    private let languages: [Language] = Language.allCases
+    @State private var selectedLanguage: AppLanguage = .italian
+    private let languages: [AppLanguage] = AppLanguage.allCases
 
     public init() {}
 
@@ -50,30 +85,15 @@ public struct SettingsScreenView: View {
                         VStack {
 
                             // Appearance
-                            DSListRowWithActionView(
-                                icon: .moon,
-                                title: "Appearance",
-                                trialingConent: ({
-                                    DSListRowNavigationValueView(value: "Dark")
-                                })
+                            SettingsAppearancePickerView(
+                                selection: $selectedColorScheme,
+                                options: colorSchemeOptions
                             )
 
                             // Language
-                            DSListRowWithActionView(
-                                icon: .globe,
-                                title: "Language",
-                                trialingConent: ({
-                                    DSListRowNavigationValueView(value: selectedLanguage.endonym)
-                                }),
-                                action: ({
-                                    self.isSelectLanguagePresented = true
-                                })
-                            )
-                            .dsOptionPickertSheet(
-                                label: "Languages",
-                                isPresented: $isSelectLanguagePresented,
+                            SettingsLanguagePickerView(
                                 selection: $selectedLanguage,
-                                options: languages
+                                languages: languages
                             )
 
                             // Face ID & Passcode
@@ -106,7 +126,6 @@ public struct SettingsScreenView: View {
 
                     // Erase data
                     DSButtonView(label: "Erase data", variant: .destructive, action: {})
-
 
                 }
                 .padding(.top, DSSpace.xl)

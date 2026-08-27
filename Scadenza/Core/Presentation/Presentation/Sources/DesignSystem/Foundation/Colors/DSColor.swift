@@ -15,6 +15,7 @@ public enum DSColor {
 
     // MARK: Background
     public static let background = Color("background", bundle: .module)
+    public static let backgroundInverce = Color("background-inverse", bundle: .module)
 
     // MARK: Surface
     public static let surfaceBase = Color("surface-base", bundle: .module)

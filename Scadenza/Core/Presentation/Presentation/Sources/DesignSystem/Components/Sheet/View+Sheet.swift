@@ -9,6 +9,21 @@ import SwiftUI
 
 extension View {
 
+    func dsSheet<Content: View>(
+        isPresented: Binding<Bool>,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View {
+
+        self.sheet(
+            isPresented: isPresented,
+            content: {
+                content()
+                    .padding(.top, DSSpace.lg)
+                    .padding(.horizontal, DSSpace.lg)
+            }
+        )
+    }
+
     func dsOptionPickertSheet<T: DSOptionPickerValueProtocol>(
         label: String,
         isPresented: Binding<Bool>,
@@ -16,18 +31,14 @@ extension View {
         options: [T]
     ) -> some View {
 
-        self.sheet(
-            isPresented: isPresented,
-            content: ({
+        self.dsSheet(
+            isPresented: isPresented) {
                 DSSheetContentOptionsListView(
                     selection: selection,
                     title: label,
                     options: options
                 )
-                .padding(.top, DSSpace.lg)
-                .padding(.horizontal, DSSpace.lg)
-            })
-        )
+            }
     }
 
     func dsOptionPickertSheet<T: DSOptionPickerValueProtocol>(
@@ -37,18 +48,13 @@ extension View {
         options: [T]
     ) -> some View {
 
-        self.sheet(
-            isPresented: isPresented,
-            content: ({
-                DSSheetContentOptionsListView(
-                    selection: selection,
-                    title: label,
-                    options: options
-                )
-                .padding(.top, DSSpace.lg)
-                .padding(.horizontal, DSSpace.lg)
-            })
-        )
+        self.dsSheet(isPresented: isPresented) {
+            DSSheetContentOptionsListView(
+                selection: selection,
+                title: label,
+                options: options
+            )
+        }
     }
 
 
