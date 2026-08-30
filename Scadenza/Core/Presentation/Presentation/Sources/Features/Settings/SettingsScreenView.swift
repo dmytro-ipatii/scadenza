@@ -74,6 +74,8 @@ public struct SettingsScreenView: View {
     @State private var selectedLanguage: AppLanguage = .italian
     private let languages: [AppLanguage] = AppLanguage.allCases
 
+    @State private var isSyncWithCloudAllowed: Bool = false
+
     public init() {}
 
     public var body: some View {
@@ -113,7 +115,7 @@ public struct SettingsScreenView: View {
                                 icon: .cloud,
                                 title: "Sync with iCloud",
                                 trialingConent: ({
-                                    DSToggleView(isOn: .constant(false))
+                                    DSToggleView(isOn: $isSyncWithCloudAllowed)
                                 })
                             )
 

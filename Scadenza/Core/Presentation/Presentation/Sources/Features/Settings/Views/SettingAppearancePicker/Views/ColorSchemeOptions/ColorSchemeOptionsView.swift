@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct AppearanceOptionsView: View {
+public struct ColorSchemeOptionsView: View {
     @Environment(\.dismiss) private var dismiss
 
     @Binding private var selection: AppColorScheme
@@ -29,27 +29,24 @@ public struct AppearanceOptionsView: View {
             title: "Color sheme",
             detennts: [.medium],
             action: applyForm,
-            content: ({
-                HStack {
-                    ForEach(options) { option in
-                        let isSelected = option == localSelection
+            content: (
+                {
+                    HStack {
+                        ForEach(options) { option in
+                            let isSelected = option == localSelection
 
-                        VStack {
                             ColorSchemeOptionView(
-                                scheme: option,
-                                state: isSelected ? .selected : .idle,
-                                action: setSelection
+                                colorScheme: option,
+                                isSelected: isSelected,
+                                onPress: setSelection
                             )
+                            .animation(.linear, value: localSelection)
 
-                            DSCheckMarkView(state: isSelected ? .completed : .empty)
                         }
-                        .frame(maxWidth: .infinity)
-                        .animation(.linear, value: localSelection)
-
                     }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            }))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                })
+        )
     }
 
     private func setSelection(sheme: AppColorScheme) {
@@ -64,7 +61,7 @@ public struct AppearanceOptionsView: View {
 }
 
 #Preview {
-    AppearanceOptionsView(
+    ColorSchemeOptionsView(
         selection: .constant(.dark),
         options: AppColorScheme.allCases
     )

@@ -34,7 +34,7 @@ public struct SettingsAppearancePickerView: View {
         .dsSheet(
             isPresented: $isOptionsPresent,
             content: ({
-                AppearanceOptionsView(
+                ColorSchemeOptionsView(
                     selection: $selection,
                     options: options
                 )

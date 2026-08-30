@@ -1,5 +1,5 @@
 //
-//  ColorSchemeOptionView.swift
+//  AppColorSchemeView.swift
 //  Presentation
 //
 //  Created by Dmytro Ipatii on 27/08/2026.
@@ -7,22 +7,17 @@
 
 import SwiftUI
 
-public struct ColorSchemeOptionView: View {
+public struct AppColorSchemeView: View {
     private let scheme: AppColorScheme
-    private let state: AppearanceOptionVariant
     private let action: (AppColorScheme) -> Void
 
-    private var appearance: AppearanceOptionAppearance {
-        state.appearance
-    }
+    private var appearance: AppColorSchemeAppearance = .init()
 
     init(
         scheme: AppColorScheme,
-        state: AppearanceOptionVariant,
         action: @escaping (AppColorScheme) -> Void
     ) {
         self.scheme = scheme
-        self.state = state
         self.action = action
     }
     public var body: some View {
@@ -45,20 +40,16 @@ public struct ColorSchemeOptionView: View {
 
         }
         .padding(DSSpace.xs)
-        .frame(minHeight: 128)
-        .frame(width: 100, alignment: .topLeading)
+        .frame(minHeight: 180)
+        .frame(width: 150, alignment: .topLeading)
         .background(
             RoundedRectangle(cornerRadius: DSRadius.md)
                 .fill(appearance.background)
         )
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.md)
-                .stroke(appearance.highlightColor, style: StrokeStyle(lineWidth: 2))
-        }
         .colorScheme(scheme.colorScheme)
-        .onTapGesture(perform: {
+        .onTapGesture {
             action(scheme)
-        })
+        }
 
     }
 
@@ -71,39 +62,35 @@ public struct ColorSchemeOptionView: View {
 }
 
 #Preview {
-    HStack {
+    HStack(spacing: 20) {
 
         VStack {
-            Text("Light")
-            ColorSchemeOptionView(
+            AppColorSchemeView(
                 scheme: .light,
-                state: .idle,
                 action: ({_ in})
             )
 
-            DSCheckMarkView(state: .completed)
+            HStack {
+                DSCheckMarkView(state: .empty)
+
+                Text("Light")
+            }
+
         }
 
         VStack {
-            Text("Dark")
-            ColorSchemeOptionView(
+
+            AppColorSchemeView(
                 scheme: .dark,
-                state: .idle,
                 action: ({_ in})
             )
 
-            DSCheckMarkView(state: .empty)
-        }
+            HStack {
+                DSCheckMarkView(state: .empty)
 
-        VStack {
-            Text("Dark")
-            ColorSchemeOptionView(
-                scheme: .dark,
-                state: .selected,
-                action: ({_ in})
-            )
+                Text("Dark")
+            }
 
-            DSCheckMarkView(state: .empty)
         }
 
     }

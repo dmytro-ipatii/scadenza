@@ -19,11 +19,9 @@ public struct DSFieldAppearance {
     let borderWidth: CGFloat = DSBorderWidth.medium
     let borderColor: Color
 
-    let borderOpacity: CGFloat
     let opacity: CGFloat
 
     public init(from state: DSFieldState) {
-        self.borderOpacity = Self.getBorderOpacity(for: state)
         self.borderColor = Self.getBorderColor(for: state)
         self.opacity = state.isDisabled.opacityValue
     }
@@ -34,13 +32,6 @@ public struct DSFieldAppearance {
         case .error: DSColor.danger
         default:
                 .clear
-        }
-    }
-
-    private static func getBorderOpacity(for state: DSFieldState) -> CGFloat {
-        switch state {
-        case .error, .focused: 1
-        default: 0
         }
     }
 

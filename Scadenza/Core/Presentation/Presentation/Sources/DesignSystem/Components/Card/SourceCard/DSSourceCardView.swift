@@ -58,14 +58,10 @@ public struct DSSourceCardView: View {
             RoundedRectangle(cornerRadius: DSRadius.lg)
                 .fill(appearance.background)
         )
-        .overlay {
-            RoundedRectangle(cornerRadius: DSRadius.lg)
-                .stroke(
-                    variant.higlightColor,
-                    style: StrokeStyle(lineWidth: 2)
-                )
-                .opacity(variant.higlightOpacity)
-        }
+        .dsBorder(
+            color: variant.higlightColor,
+            radius: DSRadius.lg
+        )
     }
 
     private var iconView: some View {

@@ -41,16 +41,11 @@ struct DSFieldView<Content: View>: View {
                     RoundedRectangle(cornerRadius: appearance.borderRadius)
                         .fill(appearance.background)
                 )
-                .overlay(alignment: .center, content: ({
-                    ZStack {
-                        RoundedRectangle(cornerRadius: appearance.borderRadius)
-                            .stroke(
-                                appearance.borderColor,
-                                style: .init(lineWidth: appearance.borderWidth)
-                            )
-                            .opacity(appearance.borderOpacity)
-                    }
-                }))
+                .dsBorder(
+                    color: appearance.borderColor,
+                    radius: appearance.borderRadius,
+                    borderWidth: appearance.borderWidth
+                )
                 .opacity(appearance.opacity)
                 .disabled(state.isDisabled)
 
