@@ -12,6 +12,7 @@ public struct DSListRowWithActionView<TrailingContent: View>: View {
     private let icon: ImageResource?
     private let title: String
     private let subtitle: String?
+    private let primaryColor: Color
 
     private let trailingContent: TrailingContent?
 
@@ -21,11 +22,13 @@ public struct DSListRowWithActionView<TrailingContent: View>: View {
         icon: ImageResource? = nil,
         title: String,
         subtitle: String? = nil,
+        primaryColor: Color = DSColor.textPrimary,
         @ViewBuilder trialingConent: () -> TrailingContent = { EmptyView() },
         action: @escaping () -> Void = {}
     ) {
         self.title = title
         self.subtitle = subtitle
+        self.primaryColor = primaryColor
 
         self.icon = icon
 
@@ -59,7 +62,7 @@ public struct DSListRowWithActionView<TrailingContent: View>: View {
             variant: .other(
                 appearance: .init(
                     icon: icon,
-                    iconColor: DSColor.textPrimary
+                    iconColor: primaryColor
                 )
             ),
             size: .small
@@ -71,7 +74,7 @@ public struct DSListRowWithActionView<TrailingContent: View>: View {
         VStack(spacing: DSSpace.xxxs) {
             Text(title)
                 .fontBody()
-                .foregroundStyle(DSColor.textPrimary)
+                .foregroundStyle(primaryColor)
                 .fontWeight(.medium)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -99,26 +102,33 @@ public struct DSListRowWithActionView<TrailingContent: View>: View {
         DSListRowWithActionView(
             icon: .moon,
             title: "Appearance",
-            trialingConent: {
+            trialingConent: ({
                 DSListRowNavigationValueView(value: "Dark")
-            }
+            })
         )
 
         DSListRowWithActionView(
             icon: .bell,
             title: "Reminder",
-            trialingConent: {
+            trialingConent: ({
                 DSToggleView(isOn: .constant(true))
-            }
+            })
         )
 
         DSListRowWithActionView(
             icon: .bell,
             title: "Reminder",
             subtitle: "13 mag · 09:00",
-            trialingConent: {
+            trialingConent: ({
                 DSToggleView(isOn: .constant(true))
-            }
+            })
+        )
+
+        DSListRowWithActionView(
+            icon: .trash,
+            title: "Delete all data",
+            primaryColor: DSColor.danger,
+            action: ({})
         )
 
     }

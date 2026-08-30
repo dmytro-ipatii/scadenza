@@ -9,15 +9,18 @@ import SwiftUI
 
 public struct DSNoticeCardAppearance {
     let icon: ImageResource
+    let iconColor: Color
     let foreground: Color
     let background: Color
 
     public init(
         icon: ImageResource,
+        iconColor: Color? = nil,
         foreground: Color,
         background: Color
     ) {
         self.icon = icon
+        self.iconColor = iconColor ?? foreground
         self.foreground = foreground
         self.background = background
     }

@@ -80,10 +80,10 @@ public struct SettingsScreenView: View {
 
     public var body: some View {
         NavigationStack {
-            DSScreenView {
+            DSSrollableScreenView {
                 VStack(spacing: DSSpace.md) {
 
-                    DSSectionView {
+                    DSSectionView(title: "General") {
                         VStack {
 
                             // Appearance
@@ -110,28 +110,57 @@ public struct SettingsScreenView: View {
                                 // Unlock with Face ID? -> toggle
                                 // Change Password -> change password form
 
-                            // Backup encripted iCloud
-                            DSListRowWithActionView(
-                                icon: .cloud,
-                                title: "Sync with iCloud",
-                                trialingConent: ({
-                                    DSToggleView(isOn: $isSyncWithCloudAllowed)
-                                })
-                            )
+
 
                         }
                         .frame(maxWidth: .infinity)
                         .dsListBackgroud(color: DSColor.surfacePrimary)
                     }
 
-                    Spacer()
+                    DSSectionView(
+                        title: "Data",
+                        content: ({
+                            VStack {
+                                DSNoticeCard(
+                                    title: "All your data stay private.",
+                                    content: "No document, image or text is ever sent elsewhere.",
+                                    variant: .custom(
+                                        icon: .shieldCheck,
+                                        iconColor: DSColor.success,
+                                        foreground: DSColor.textPrimary,
+                                        background: DSColor.surfaceSecondary
+                                    )
+                                )
 
-                    // Erase data
-                    DSButtonView(label: "Erase data", variant: .destructive, action: {})
+                                VStack {
+
+                                    // Backup encripted iCloud
+                                    DSListRowWithActionView(
+                                        icon: .cloud,
+                                        title: "Sync with iCloud",
+                                        trialingConent: ({
+                                            DSToggleView(isOn: $isSyncWithCloudAllowed)
+                                        })
+                                    )
+
+                                    DSListRowWithActionView(
+                                        icon: .trash,
+                                        title: "Delete all data",
+                                        primaryColor: DSColor.danger,
+                                        trialingConent: {
+                                            DSListRowNavigationValueView(value: "")
+                                        },
+                                        action: ({})
+                                    )
+                                }
+                                .frame(maxWidth: .infinity)
+                                .dsListBackgroud(color: DSColor.surfacePrimary)
+                            }
+                    }))
 
                 }
                 .padding(.top, DSSpace.xl)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
             .navigationTitle("Settings")
         }

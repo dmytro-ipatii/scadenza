@@ -52,7 +52,7 @@ public struct DSNoticeCard: View {
         Image(appearance.icon)
             .squareAspectRation()
             .frame(width: DSIconSize.md)
-            .foregroundStyle(appearance.foreground)
+            .foregroundStyle(appearance.iconColor)
     }
 
     private func titleView(_ title: String) -> some View {
@@ -112,7 +112,12 @@ public struct DSNoticeCard: View {
     DSNoticeCard(
         title: "Access to calendar regected",
         content: "The analysis is done with Apple Intelligence on the device. No files leave the iPhone, not even temporarily.",
-        variant: .custom(icon: .info, foreground: DSColor.accent, background: DSColor.accentTint)
+        variant: .custom(
+            icon: .info,
+            iconColor: nil,
+            foreground: DSColor.accent,
+            background: DSColor.accentTint
+        )
     )
     .padding()
 }

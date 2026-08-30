@@ -11,7 +11,7 @@ public enum DSNoticeCardVariant {
     case warning
     case danger(icon: ImageResource)
     case neutral(icon: ImageResource)
-    case custom(icon: ImageResource, foreground: Color, background: Color)
+    case custom(icon: ImageResource, iconColor: Color?, foreground: Color, background: Color)
 
     public var appearance: DSNoticeCardAppearance {
         switch self {
@@ -20,10 +20,12 @@ public enum DSNoticeCardVariant {
         case .neutral(icon: let icon): return DSNoticeCardAppearance.getNeutral(icon: icon)
         case .custom(
             icon: let icon,
+            iconColor: let iconColor,
             foreground: let foreground,
             background: let background
         ): return DSNoticeCardAppearance(
             icon: icon,
+            iconColor: iconColor,
             foreground: foreground,
             background: background
         )
