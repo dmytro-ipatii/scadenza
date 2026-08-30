@@ -47,7 +47,7 @@ public enum AppLanguage: Sendable {
     case italian
 }
 
-extension AppLanguage: DSOptionPickerValueProtocol, CaseIterable{
+extension AppLanguage: DSOptionPickerValueProtocol, CaseIterable {
     var endonym: String {
         switch self {
         case .english:
@@ -66,6 +66,11 @@ extension AppLanguage: DSOptionPickerValueProtocol, CaseIterable{
     }
 }
 
+public enum SettingsScreenRoute: Sendable, CaseIterable {
+    case security
+    case deleteAllData
+}
+
 public struct SettingsScreenView: View {
 
     @State private var selectedColorScheme: AppColorScheme = AppColorScheme.default
@@ -76,11 +81,13 @@ public struct SettingsScreenView: View {
 
     @State private var isSyncWithCloudAllowed: Bool = false
 
+    @State private var paths: [SettingsScreenRoute] = []
+
     public init() {}
 
     public var body: some View {
-        NavigationStack {
-            DSSrollableScreenView {
+        NavigationStack(path: $paths) {
+            DSScrollableScreenView {
                 VStack(spacing: DSSpace.md) {
 
                     DSSectionView(title: "General") {
@@ -104,13 +111,11 @@ public struct SettingsScreenView: View {
                                 title: "Face ID & Passcode",
                                 trialingConent: ({
                                     DSListRowNavigationValueView(value: "")
+                                }),
+                                action: ({
+                                    paths.append(.security)
                                 })
                             )
-                                // Set-up password -> form -> show password option when password set-up:
-                                // Unlock with Face ID? -> toggle
-                                // Change Password -> change password form
-
-
 
                         }
                         .frame(maxWidth: .infinity)
@@ -150,7 +155,9 @@ public struct SettingsScreenView: View {
                                         trialingConent: {
                                             DSListRowNavigationValueView(value: "")
                                         },
-                                        action: ({})
+                                        action: ({
+                                            paths.append(.deleteAllData)
+                                        })
                                     )
                                 }
                                 .frame(maxWidth: .infinity)
@@ -163,6 +170,14 @@ public struct SettingsScreenView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
             .navigationTitle("Settings")
+            .navigationDestination(
+                for: SettingsScreenRoute.self,
+                destination: ({ destination in
+                    switch destination {
+                    case .security: SecurityView()
+                    case .deleteAllData: DeleteAllDataView()
+                }
+            }))
         }
     }
 }

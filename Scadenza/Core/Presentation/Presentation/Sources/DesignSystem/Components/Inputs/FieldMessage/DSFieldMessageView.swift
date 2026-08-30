@@ -32,8 +32,19 @@ public enum DSFieldMessageVariant {
 
 public struct DSFieldMessageView: View {
 
-    var message: String
-    var variant: DSFieldMessageVariant
+    private var message: String
+    private var variant: DSFieldMessageVariant
+    private var alignemnt: Alignment
+
+    public init(
+        message: String,
+        variant: DSFieldMessageVariant,
+        alignemnt: Alignment = .leading
+    ) {
+        self.message = message
+        self.variant = variant
+        self.alignemnt = alignemnt
+    }
 
     public var body: some View {
         HStack(spacing: DSSpace.xxxs) {
@@ -47,7 +58,7 @@ public struct DSFieldMessageView: View {
                 .fontWeight(.semibold)
 
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: alignemnt)
         .foregroundStyle(variant.color)
     }
 }

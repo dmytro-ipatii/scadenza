@@ -21,27 +21,27 @@ public struct AppColorSchemeView: View {
         self.action = action
     }
     public var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: DSSpace.xs) {
 
             contentView(background: appearance.contentColorHighlight)
                 .frame(width: 50, height: 8)
 
             contentView(background: appearance.contentColorPrimary)
                 .frame(maxWidth: .infinity)
-                .frame(height: 28)
+                .frame(height: 38)
 
             contentView(background: appearance.contentColorPrimary)
                 .frame(maxWidth: .infinity)
-                .frame(height: 28)
+                .frame(height: 38)
 
             contentView(background: appearance.contentColorSecondary)
                 .frame(maxWidth: .infinity)
-                .frame(height: 16)
+                .frame(height: 26)
 
         }
         .padding(DSSpace.xs)
-        .frame(minHeight: 180)
-        .frame(width: 150, alignment: .topLeading)
+        .frame(minHeight: 180, alignment: .topLeading)
+        .frame(width: 150)
         .background(
             RoundedRectangle(cornerRadius: DSRadius.md)
                 .fill(appearance.background)

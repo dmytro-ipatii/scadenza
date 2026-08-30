@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct DSSrollableScreenView<Content: View>: View {
+public struct DSScrollableScreenView<Content: View>: View {
     private var content: Content
 
     public init(

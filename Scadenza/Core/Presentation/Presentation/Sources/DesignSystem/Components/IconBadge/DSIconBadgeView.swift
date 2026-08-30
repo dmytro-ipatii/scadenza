@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-
 public enum DSIconBangeSize {
     case small
     case medium
+    case large
 
     var cornerRadius: CGFloat {
         switch self {
         case .small:
             DSRadius.xs
-        case .medium:
+        case .medium, .large:
             DSRadius.md
         }
     }
@@ -27,6 +27,8 @@ public enum DSIconBangeSize {
             DSIconSize.sm
         case .medium:
             DSIconSize.xl
+        case .large:
+            DSIconSize.xxl
         }
     }
 }
