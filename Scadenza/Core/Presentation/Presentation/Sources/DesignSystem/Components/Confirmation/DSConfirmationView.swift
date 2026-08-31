@@ -43,6 +43,7 @@ public struct DSConfirmationView<Actions: View>: View {
                 Text(title)
                     .fontTitle()
                     .foregroundStyle(DSColor.textPrimary)
+                    .multilineTextAlignment(.center)
 
                 if let message {
                     Text(message)

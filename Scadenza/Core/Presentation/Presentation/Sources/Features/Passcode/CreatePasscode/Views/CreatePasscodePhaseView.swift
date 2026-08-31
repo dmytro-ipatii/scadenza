@@ -17,7 +17,7 @@ public struct CreatePasscodePhaseView: View {
             instructions: "Please enter your pass code with \(viewModel.maxPasscodeLength)-digit pin.",
             maxLength: viewModel.maxPasscodeLength,
             value: $viewModel.passcode,
-            onChange: viewModel.appendDigit
+            onChange: viewModel.processPasscode
         )
     }
 }

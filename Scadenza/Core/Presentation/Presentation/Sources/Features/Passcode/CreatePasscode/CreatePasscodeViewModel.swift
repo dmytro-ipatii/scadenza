@@ -17,27 +17,27 @@ public final class CreatePasscodeViewModel {
         case completed
     }
 
-    var maxPasscodeLength: Int = 6
+    var maxPasscodeLength: Int = PasscodeConstants.maxPasscodeLength
 
     var passcode: String = ""
     var confirmationPasscode: String = ""
 
-    var step: Step = .create
+    var phase: Step = .create
 
     var errorMessage: String?
 
     public init() {}
 
-    func appendDigit(_ digit: String) {
+    func processPasscode(_ codeString: String) {
 
-        guard !digit.isEmpty, digit.allSatisfy(\.isNumber) else {
+        guard !codeString.isEmpty, codeString.allSatisfy(\.isNumber) else {
             return
         }
 
-        switch step {
+        switch phase {
         case .create:
             if passcode.count == maxPasscodeLength {
-                step = .confirm
+                phase = .confirm
             }
 
         case .confirm:
@@ -60,6 +60,6 @@ public final class CreatePasscodeViewModel {
             return
         }
 
-        step = .completed
+        phase = .completed
     }
 }

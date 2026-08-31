@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct PasscodeScreenView: View {
     private let title: String
-    private let instructions: String
+    private let instructions: String?
     private let errorMessage: String?
     private let maxLength: Int
     @Binding private var value: String
@@ -17,7 +17,7 @@ public struct PasscodeScreenView: View {
 
     public init(
         title: String,
-        instructions: String,
+        instructions: String? = nil,
         errorMessage: String? = nil,
         maxLength: Int,
         value: Binding<String>,
@@ -36,7 +36,9 @@ public struct PasscodeScreenView: View {
 
             titleView
 
-            instructionsView
+            if let instructions {
+                instructionsView(instructions)
+            }
 
             passcodeInputView
 
@@ -51,8 +53,8 @@ public struct PasscodeScreenView: View {
             .foregroundStyle(DSColor.textPrimary)
     }
 
-    private var instructionsView: some View {
-        Text(instructions)
+    private func instructionsView(_ text: String) -> some View {
+        Text(text)
             .fontBody()
             .foregroundStyle(DSColor.textSecondary)
             .fontWeight(.medium)

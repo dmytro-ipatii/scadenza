@@ -1,32 +1,34 @@
 //
-//  PasscodeSettingsView.swift
+//  UpdatePasscodeView.swift
 //  Presentation
 //
-//  Created by Dmytro Ipatii on 30/08/2026.
+//  Created by Dmytro Ipatii on 31/08/2026.
 //
 
 import SwiftUI
 
-public struct CreatePasscodeView: View {
+
+
+public struct UpdatePasscodeView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @State private var viewModel: CreatePasscodeViewModel
+    @State private var viewModel: UpdatePasscodeViewModel
 
     public init() {
-        self.viewModel = CreatePasscodeViewModel()
+        self.viewModel = UpdatePasscodeViewModel()
     }
 
     public var body: some View {
         ZStack {
             switch viewModel.phase {
-            case .create:
-                CreatePasscodePhaseView(viewModel: viewModel)
+            case .verify:
+                VerifyPasscodePhaseView(viewModel: $viewModel)
 
-            case .confirm:
-                ConfirmPasscodePhaseView(viewModel: viewModel)
+            case .update:
+                SetNewPasscodePhaseView(viewModel: $viewModel)
 
             case .completed:
-                CompletedPasscodePhaseView(onComplete: ({ dismiss() }))
+                CompletedNewPasscodeCreationPhaseView(onComplete: ({ dismiss() }))
                     .toolbarVisibility(.hidden, for: .navigationBar)
             }
         }
@@ -46,9 +48,8 @@ public struct CreatePasscodeView: View {
                 }))
         }
     }
-
 }
 
 #Preview {
-    CreatePasscodeView()
+    UpdatePasscodeView()
 }

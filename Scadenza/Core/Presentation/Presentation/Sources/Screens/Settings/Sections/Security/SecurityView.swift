@@ -21,7 +21,9 @@ struct SecurityView: View {
 //                            .fontTitle()
 //                            .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        CreatePasscodeView()
+                        //CreatePasscodeView()
+
+                        UpdatePasscodeView()
 
 
 

@@ -18,7 +18,7 @@ public struct ConfirmPasscodePhaseView: View {
             errorMessage: viewModel.errorMessage,
             maxLength: viewModel.maxPasscodeLength,
             value: $viewModel.confirmationPasscode,
-            onChange: viewModel.appendDigit
+            onChange: viewModel.processPasscode
         )
     }
 }
